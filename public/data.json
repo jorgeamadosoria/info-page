@@ -1,0 +1,178 @@
+{
+  "summary": {
+    "name": "Jorge Amado Soria Ramírez",
+    "positions": ["Software developer", "CS teacher", "Performance engineer"],
+    "description": "15+ years coding in Spring + Hibernate with Oracle / PostgreSQL; 5+ years of performance testing with Neoload / JMeter; passing / working experience in LAMP, jQuery and Bootstrap/CCS3; 1+ years of experience in React."
+  },
+  "contactInfo": {
+    "residence": "Montevideo, Montevideo, Uruguay",
+    "phone": "93816259",
+    "email": "darksoul.uci@gmail.com",
+    "socials": [
+      {
+        "name": "linkedin",
+        "url": "linkedin.com/in/jorge-soria-98323122",
+        "icon": "fa fab-linkedin"
+      },
+      {
+        "name": "facebook",
+        "url": "https://www.facebook.com/jorgeamado.soriaramirez",
+        "icon": ""
+      },
+      {
+        "name": "github",
+        "url": "https://github.com/jorgeamadosoria",
+        "icon": ""
+      }
+    ]
+  },
+  "languages": [
+    {
+      "code": "es",
+      "level": "native"
+    },
+    {
+      "code": "en",
+      "level": "advanced"
+    },
+    {
+      "code": "fr",
+      "level": "rudimentary"
+    }
+  ],
+  "skills": [
+    {
+      "name": "Java",
+      "level": "Professional"
+    },
+    {
+      "name": "MySQL",
+      "level": "Intermediate"
+    },
+    {
+      "name": "Bootstrap",
+      "level": "Intermediate"
+    },
+    {
+      "name": "Jenkins",
+      "level": "Intermediate"
+    },
+    {
+      "name": "Javascript",
+      "level": "Beginner"
+    },
+    {
+      "name": "PostgresSQL",
+      "level": "Intermediate"
+    },
+    {
+      "name": "Neoload",
+      "level": "Professional"
+    },
+    {
+      "name": "Rundeck",
+      "level": " Intermediate"
+    },
+    {
+      "name": "MongoDB",
+      "level": "Beginner"
+    },
+    {
+      "name": "Oracle",
+      "level": "Beginner"
+    },
+    {
+      "name": "JMeter",
+      "level": "Professional"
+    },
+    {
+      "name": "React",
+      "level": "Beginner"
+    }
+  ],
+  "entries": [
+    {
+      "fromDate": "2008-08-01",
+      "toDate": "2013-06-01",
+      "name": "Developer / Architect / Support",
+      "entity": "Albet SA",
+      "reference": "https://www.albet.cu",
+      "description": "Albet SA was the commercial front for the software products of the University of Informatics Sciences. During this time I worked on several projects, mainly developing an ERP for the Venezuelan CICPC.",
+      "type": "work"
+    },
+    {
+      "fromDate": "2009-02-01",
+      "toDate": "2015-06-01",
+      "name": "CS Teacher",
+      "entity": "University of Informatics Sciences",
+      "reference": "https://www.uci.cu",
+      "description": "CS Teacher, (CS 101 to basic compiler programming); also worked as an undergraduate thesis adviser and academic researcher for competitive programming and pedagogical methodology investigations.",
+      "type": "work"
+    },
+    {
+      "fromDate": "2012-01-01",
+      "toDate": "2014-12-01",
+      "name": "Freelancer",
+      "entity": "Pixeliris",
+      "reference": "http://pixeliris.com/",
+      "description": "Freelance development of C# apps with Microsoft Kinect; development / support of small advertising web apps for SECOM - GMIXON - PIXELIRIS.",
+      "type": "work"
+    },
+    {
+      "fromDate": "2015-07-01",
+      "toDate": "2018-07-01",
+      "name": "Performance Engineer",
+      "entity": "Globant SA",
+      "reference": "https://www.globant.com/",
+      "description": "Performance testing for a microservice architecture for K12 Inc, an US based education content provider. This includes large E2E performance tests, as well as smaller focused tests for REST APIs.",
+      "type": "work"
+    },
+    {
+      "fromDate": "2003-08-01",
+      "toDate": "2008-07-01",
+      "name": "Informatics Engineer",
+      "entity": "University of Informatics Sciences",
+      "reference": "https://www.uci.cu",
+      "description": "Graduated with honors. Stayed after graduation to work as CS instructor / teacher. undergraduate work included software development on college projects for external clients and developer / organizer for programming contests, activities and trainings",
+      "type": "education"
+    },
+    {
+      "fromDate": "2007-08-01",
+      "toDate": "2015-07-01",
+      "name": "Developer",
+      "entity": "ACM ICPC Caribbean Region",
+      "reference": "http://coj.uci.cu",
+      "description": "Worked on the Caribbean Online Judge, a software evaluation tool for competitive programming which was the first of its kind in Cuba and the Caribbean. Over the years this work evolved and ultimately allowed the creation of the ACM ICPC Caribbean Region.",
+      "type": "volunteering"
+    },
+    {
+      "fromDate": "2010-03-01",
+      "name": "Introductory SQL course",
+      "entity": "Oracle University",
+      "description": "Introductory course to Oracle basics and PL/SQL queries. Imparted in Venezuela in 2010 by Enfoque Directo Aplicado (E.D.A), a partner of Oracle University. Required for database management and complemented by a second, uncertified module on Oracle replication.",
+      "reference": "https://image.ibb.co/kehido/img05142018_006.jpg",
+      "type": "certification"
+    },
+    {
+      "fromDate": "2007-05-01",
+      "entity": "Sagem Défense Sécurité",
+      "description": "Advanced training course on NIST. NIST in this context refers to ANSI/NIST-ITL 1-2000, a data format for the exchange of fingerprints used by Sagem SA, the training entity",
+      "reference": "https://image.ibb.co/jaQQr8/img05142018_019.jpg",
+      "type": "certification"
+    },
+    {
+      "fromDate": "2007-05-01",
+      "entity": "Sagem Défense Sécurité",
+      "description": "Advanced training course on MSO SDK. MSO SDK is the device API for SAGEM Morpho fingerprint scanners, programmable from C# and Visual Basic.NET",
+      "reference": "https://image.ibb.co/ijiZjT/img05142018_020.jpg",
+      "type": "certification"
+    },
+    {
+      "fromDate": "2017-12-02",
+      "entity": "IELTS General Training Test from the British Council",
+      "description": "Overall band score of 8.5, CEFR level of C2; test report form number: 17UY000323SORJ001G",
+      "reference": "https://image.ibb.co/nmDgyo/2015_ielts.png",
+      "type": "certification"
+    }
+  ]
+}
