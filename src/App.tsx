@@ -1,10 +1,16 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
-import FlatResume from "./components/FlatResume/FlatResume";
+import "bootstrap/dist/css/bootstrap.min.css";
+import FlatResume from "./components/resumes/FlatResume/FlatResume";
+import ColorfulResume from "./components/resumes/ColorfulResume/ColorfulResume";
+import Header from "./components/Header/Header";
+
+import { Container } from "react-bootstrap";
+import { RESUME_DEFAULT } from "./data/Resume";
 
 function App() {
   const [appState, setAppState] = useState({
-    resume: undefined,
+    resume: RESUME_DEFAULT,
   });
 
   useEffect(() => {
@@ -25,10 +31,20 @@ function App() {
       });
   }, [setAppState]);
 
+  const getResume = (style: string) => {
+    switch (style) {
+      case "flat":
+        return <FlatResume resume={appState.resume}></FlatResume>;
+      case "colorful":
+        return <ColorfulResume resume={appState.resume}></ColorfulResume>;
+    }
+  };
+
   return (
-    <div className="App">
-      <FlatResume resume={appState.resume}></FlatResume>
-    </div>
+    <Container fluid>
+      <Header></Header>
+      <div className="content">{getResume("flat")}</div>
+    </Container>
   );
 }
 
