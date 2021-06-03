@@ -3,18 +3,24 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import FlatResume from "./components/resumes/FlatResume/FlatResume";
 import ColorfulResume from "./components/resumes/ColorfulResume/ColorfulResume";
-import Header from "./components/Header/Header";
-
+import CompactResume from "./components/resumes/CompactResume/CompactResume";
+import LeftRailResume from "./components/resumes/LeftRailResume/LeftRailResume";
+//import Header from "./components/Header/Header";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Container } from "react-bootstrap";
-import { RESUME_DEFAULT } from "./data/Resume";
+import Header from "./components/Header/Header";
+import Relevance from "./data/enums/Relevance";
+import Resume from "./data/Resume";
+import CompactResumePDF from "./components/pdf/CompactResumePDF";
+import ColorfulResumePDF from "./components/pdf/ColorfulResumePDF";
+import FlatResumePDF from "./components/pdf/FlatResumePDF";
+import LeftRailResumePDF from "./components/pdf/LeftRailResumePDF";
 
 function App() {
-  const [appState, setAppState] = useState({
-    resume: RESUME_DEFAULT,
-  });
+  const [resumeState, setResumeState] = useState({ resume: new Resume() });
 
   useEffect(() => {
-    fetch("data.json")
+    fetch("/data.json")
       .then(function (response) {
         if (!response.ok) {
           throw Error(response.statusText);
@@ -23,28 +29,105 @@ function App() {
         return response.json();
       })
       .then((json) => {
-        setAppState({ resume: json });
+        setResumeState({
+          resume: new Resume(json),
+        });
       })
       .catch(function (error) {
         console.log(error);
         return null;
       });
-  }, [setAppState]);
-
-  const getResume = (style: string) => {
-    switch (style) {
-      case "flat":
-        return <FlatResume resume={appState.resume}></FlatResume>;
-      case "colorful":
-        return <ColorfulResume resume={appState.resume}></ColorfulResume>;
-    }
-  };
+  }, []);
 
   return (
-    <Container fluid>
-      <Header></Header>
-      <div className="content">{getResume("flat")}</div>
-    </Container>
+    <Router>
+      <Switch>
+        <Route path="/flat">
+          <Container fluid>
+            <Header format="flat-pdf"></Header>
+            <div className="content">
+              <FlatResume
+                resume={resumeState.resume}
+                relevance={Relevance.TRIVIAL}
+              />
+            </div>
+          </Container>
+        </Route>
+        <Route path="/colorful">
+          <Container fluid>
+            <Header format="colorful-pdf"></Header>
+            <div className="content">
+              <ColorfulResume
+                resume={resumeState.resume}
+                relevance={Relevance.TRIVIAL}
+              />
+            </div>
+          </Container>
+        </Route>
+        <Route path="/leftrail">
+          <Container fluid>
+            <Header format="leftrail-pdf"></Header>
+            <div className="content">
+              <LeftRailResume
+                resume={resumeState.resume}
+                relevance={Relevance.STANDARD}
+              />
+            </div>
+          </Container>
+        </Route>
+        <Route path="/compact">
+          <Container fluid>
+            <Header format="compact-pdf"></Header>
+            <div className="content">
+              <CompactResume
+                resume={resumeState.resume}
+                relevance={Relevance.ESSENTIAL}
+              />
+            </div>
+          </Container>
+        </Route>
+        <Route path="/compact-pdf">
+          <Container fluid>
+            <div className="content">
+              <CompactResumePDF
+                resume={resumeState.resume}
+                relevance={Relevance.ESSENTIAL}
+              />
+            </div>
+          </Container>
+        </Route>
+        <Route path="/colorful-pdf">
+          <Container fluid>
+            <div className="content">
+              <ColorfulResumePDF
+                resume={resumeState.resume}
+                relevance={Relevance.TRIVIAL}
+              />
+            </div>
+          </Container>
+        </Route>
+        <Route path="/leftrail-pdf">
+          <Container fluid>
+            <div className="content">
+              <LeftRailResumePDF
+                resume={resumeState.resume}
+                relevance={Relevance.STANDARD}
+              />
+            </div>
+          </Container>
+        </Route>
+        <Route path="/flat-pdf">
+          <Container fluid>
+            <div className="content">
+              <FlatResumePDF
+                resume={resumeState.resume}
+                relevance={Relevance.TRIVIAL}
+              />
+            </div>
+          </Container>
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 

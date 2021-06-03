@@ -1,15 +1,13 @@
 {
+  "name": { "value": "Jorge Amado Soria Ramírez", "relevance": 1 },
+  "positions": [
+    { "value": "Software developer", "relevance": 1 },
+    { "value": "Performance engineer", "relevance": 2 },
+    { "value": "CS teacher", "relevance": 3 }
+  ],
   "summary": {
-    "name": { "value": "Jorge Amado Soria Ramírez", "relevance": 1 },
-    "positions": [
-      { "value": "Software developer", "relevance": 1 },
-      { "value": "Performance engineer", "relevance": 2 },
-      { "value": "CS teacher", "relevance": 3 }
-    ],
-    "description": {
-      "value": "15+ years coding in Spring + Hibernate with Oracle / PostgreSQL; 5+ years of performance testing with Neoload / JMeter; passing / working experience in LAMP, jQuery and Bootstrap/CCS3; 1+ years of experience in React.",
-      "relevance": 2
-    }
+    "value": "15+ years coding in Spring + Hibernate with Oracle / PostgreSQL; 5+ years of performance testing with Neoload / JMeter; passing / working experience in LAMP, jQuery and Bootstrap/CCS3; 1+ years of experience in React.",
+    "relevance": 1
   },
   "contacts": [
     {
@@ -22,7 +20,7 @@
       "type": "phone",
       "name": "+52 662 4791 332",
       "url": "https://api.whatsapp.com/send?phone=+526624791332",
-      "relevance": 2
+      "relevance": 1
     },
     {
       "type": "email",
@@ -45,19 +43,19 @@
   ],
   "languages": [
     {
-      "code": "Spanish",
-      "level": "native (CEFR C2)",
-      "relevance": 1
+      "code": "French",
+      "level": "basic",
+      "relevance": 3
     },
     {
       "code": "English",
-      "level": "proficient (CEFR C2)",
+      "level": "proficient",
       "relevance": 1
     },
     {
-      "code": "French",
-      "level": "basic (CEFR A1)",
-      "relevance": 3
+      "code": "Spanish",
+      "level": "native",
+      "relevance": 1
     }
   ],
   "skills": [
@@ -128,9 +126,9 @@
       "toDate": null,
       "name": "Senior Java Developer",
       "entity": "Encora SA",
-      "reference": { "value": "https://nearsoft.com/", "relevance": 3 },
+      "reference": { "value": "https://nearsoft.com/", "relevance": 1 },
       "description": {
-        "value": "Encora SA, formerly Nearsoft, is a nearshore software company specialized in staff augmentation for mainly American but also some Mexican clients.",
+        "value": "React + Typescript frontend development and Java backend microservice development for TripAdvisor as part of a staff augmentation contract with Encora",
         "relevance": 3
       },
       "type": "work",
@@ -177,7 +175,7 @@
     },
     {
       "fromDate": "2015-07-01",
-      "toDate": "2018-07-01",
+      "toDate": "2019-07-01",
       "name": "Performance Engineer",
       "entity": "Globant SA",
       "reference": { "value": "https://www.globant.com/", "relevance": 3 },
@@ -189,11 +187,24 @@
       "relevance": 1
     },
     {
+      "fromDate": "2019-07-01",
+      "toDate": "2019-11-30",
+      "name": "Java & Angular Developer",
+      "entity": "Globant SA",
+      "reference": { "value": "https://www.globant.com/", "relevance": 3 },
+      "description": {
+        "value": "internal development of auxiliary web tools for data management and lower environment handling for K12",
+        "relevance": 3
+      },
+      "type": "work",
+      "relevance": 1
+    },
+    {
       "fromDate": "2003-08-01",
       "toDate": "2008-07-01",
       "name": "Informatics Engineer",
       "entity": "University of Informatics Sciences",
-      "reference": { "value": "https://www.uci.cu", "relevance": 3 },
+      "reference": { "value": "https://www.uci.cu", "relevance": 1 },
       "description": {
         "value": "Graduated with honors. Stayed after graduation to work as CS instructor / teacher. undergraduate work included software development on college projects for external clients and developer / organizer for programming contests, activities and trainings",
         "relevance": 3

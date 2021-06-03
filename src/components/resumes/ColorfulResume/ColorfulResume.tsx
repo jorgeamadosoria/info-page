@@ -1,8 +1,9 @@
 import React from "react";
 import "./ColorfulResume.css";
-import type Resume from "../../../data/Resume";
-import { Container, Row, Col, Card, ListGroup } from "react-bootstrap";
-import SocialType from "../../../data/enums/SocialType";
+import { Container, Row, Col, Card, ListGroup, Badge } from "react-bootstrap";
+import EntryType from "../../../data/enums/EntryType";
+import { ResumeProps } from "../ResumeUtils";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFacebook,
@@ -18,22 +19,24 @@ import {
   faHandsHelping,
   faMapMarkerAlt,
 } from "@fortawesome/free-solid-svg-icons";
-import EntryType from "../../../data/enums/EntryType";
+import SocialType from "../../../data/enums/SocialType";
 
 const getIcon = (name: String) => {
   switch (name) {
     case "residence":
-      return <FontAwesomeIcon icon={faMapMarkerAlt} size="lg" />;
+      return (
+        <FontAwesomeIcon icon={faMapMarkerAlt} color="#ea4335" size="lg" />
+      );
     case "phone":
-      return <FontAwesomeIcon icon={faWhatsapp} size="lg" />;
+      return <FontAwesomeIcon icon={faWhatsapp} color="#25d366" size="lg" />;
     case "email":
-      return <FontAwesomeIcon icon={faEnvelope} size="lg" />;
+      return <FontAwesomeIcon icon={faEnvelope} color="#ffa930" size="lg" />;
     case SocialType.GITHUB:
-      return <FontAwesomeIcon icon={faGithub} size="lg" />;
+      return <FontAwesomeIcon icon={faGithub} color="#333" size="lg" />;
     case SocialType.FACEBOOK:
-      return <FontAwesomeIcon icon={faFacebook} size="lg" />;
+      return <FontAwesomeIcon icon={faFacebook} color="#3b5998" size="lg" />;
     case SocialType.LINKEDIN:
-      return <FontAwesomeIcon icon={faLinkedin} size="lg" />;
+      return <FontAwesomeIcon icon={faLinkedin} color="#00a0dc" size="lg" />;
     case EntryType.WORK:
       return <FontAwesomeIcon icon={faBriefcase} size="lg" />;
     case EntryType.EDUCATION:
@@ -44,29 +47,10 @@ const getIcon = (name: String) => {
       return <FontAwesomeIcon icon={faCertificate} size="lg" />;
   }
 };
-
-type Props = {
-  resume: Resume;
-};
-
-const ColorfulResume = ({ resume }: Props) => {
-  const { summary, contacts, languages, skills, entries } = resume;
-
-  if (!resume) return null;
-
-  const sortedEntries = entries.sort((e1, e2) => {
-    if (new Date(e2.fromDate).getTime() === new Date(e1.fromDate).getTime())
-      return 0;
-    if (new Date(e2.fromDate).getTime() > new Date(e1.fromDate).getTime())
-      return 1;
-    return -1;
-  });
-
-  const sortedSkills = skills.sort((e1, e2) => {
-    return e2.level.localeCompare(e1.level);
-  });
-
-  const positions = summary.positions
+const ColorfulResume = ({ resume, relevance }: ResumeProps) => {
+  const { name, positions, summary, contacts, languages, skills, entries } =
+    resume.prepareResume(relevance);
+  const joinedPositions = positions
     .map((position) => position.value)
     .join(", ");
 
@@ -74,21 +58,22 @@ const ColorfulResume = ({ resume }: Props) => {
     <Container fluid>
       <Row className="pt-2">
         <Col xs={12}>
-          <h3>{summary.name.value}</h3>
+          <h3>{name.value}</h3>
           <Card.Subtitle className="mb-2 text-muted">
-            <i>{positions}</i>
+            <i>{joinedPositions}</i>
           </Card.Subtitle>
+          <hr />
         </Col>
       </Row>
       <Row className="pt-2">
         <Col className="pl-3 pr-1" xs={5}>
-          {summary.description.value}
+          {summary.value}
         </Col>
         <Col
           className="border border-dark border-bottom-0 border-top-0 border-right-0"
           xs={4}
         >
-          <Row className="pl-3 pr-1 ">
+          <Row className="pl-3 pr-1">
             {contacts.map((contact, index) => (
               <Col xs={6} className="p-1 border-0" key={index}>
                 <p className="text-break">
@@ -116,10 +101,18 @@ const ColorfulResume = ({ resume }: Props) => {
           <ListGroup variant="flush">
             {languages.map((language, index) => (
               <ListGroup.Item className="p-0 border-bottom-0 " key={index}>
-                <p className="text-break">
-                  {language.code}&nbsp;&nbsp;
-                  <i>({language.level})</i>
-                </p>
+                <h5>
+                  <Badge
+                    pill
+                    variant="secondary"
+                    className={
+                      "colorful-" + language.shortLevel + " text-break"
+                    }
+                  >
+                    {language.code}&nbsp;&nbsp;
+                    <i>{language.level}</i>
+                  </Badge>
+                </h5>
               </ListGroup.Item>
             ))}
           </ListGroup>
@@ -129,19 +122,23 @@ const ColorfulResume = ({ resume }: Props) => {
         <Col xs={12}>
           <hr />
         </Col>
-        {sortedSkills.map((skill, index) => (
+        {skills.map((skill, index) => (
           <Col xs={12} sm={6} md={4} lg={2} key={index}>
-            <b>{skill.name}</b>
-            &nbsp;<i>({skill.level})</i>
+            <Badge pill className={"colorful-skill-" + skill.level}>
+              <b>
+                {skill.name}
+                &nbsp;<i>({skill.level})</i>
+              </b>
+            </Badge>
           </Col>
         ))}
       </Row>
-      <Row>
+      <Row className="pb-3">
         <Col xs={12}>
           <hr />
         </Col>
       </Row>
-      {sortedEntries.map((entry, index) => {
+      {entries.map((entry, index) => {
         const refText =
           entry.type !== EntryType.CERTIFICATION ? entry.reference.value : null;
 
@@ -149,34 +146,57 @@ const ColorfulResume = ({ resume }: Props) => {
           <Row key={index} className="ml-3">
             <Col
               xs={12}
-              className="pb-0 border border-dark border-bottom-0 border-top-0 border-right-0"
+              className={
+                "colorful-" +
+                entry.type +
+                " pb-0 border border-dark border-right-0 border-bottom-0 border-top-0 colorful-entry"
+              }
             >
-              <div className="position-relative mx-auto timeline-icon border p-2 border-dark">
+              <div
+                className={
+                  "colorful-" +
+                  entry.type +
+                  "-icon colorful-" +
+                  entry.type +
+                  " position-relative mx-auto colorful-timeline-icon border p-2 border-dark"
+                }
+              >
                 {getIcon(entry.type)}
               </div>
-
-              <p className="mt-2">
-                {new Date(entry.fromDate).toLocaleDateString()}
+              <p
+                className={
+                  "colorful-" +
+                  entry.type +
+                  " h5 colorful-entry-header border border-left-0 border-dark d-inline-flex pl-3 pr-3"
+                }
+              >
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                {entry.fromDate.toLocaleDateString()}
                 {entry.toDate &&
-                  " -> ".concat(new Date(entry.toDate).toLocaleDateString())}
-              </p>
-              <p className="pl-4">
+                  " to ".concat(entry.toDate.toLocaleDateString())}
+                &nbsp;&nbsp;
                 {entry.name}&nbsp;@&nbsp;
-                {refText && (
+                {refText ? (
                   <a
                     className="text-dark"
                     target="blank"
                     href={entry.reference.value}
                   >
-                    {entry.entity}
+                    {entry.entity}&nbsp;
                   </a>
-                )}
-                {!refText && (
+                ) : (
                   <>
                     {entry.entity}
                     &nbsp;&nbsp;
+                  </>
+                )}
+              </p>
+              <p className="pl-4 ml-3">{entry.description.value}</p>
+              <p className="pl-4 ml-3">
+                {!refText && (
+                  <>
                     <a
-                      className="text-dark"
+                      className="colorfulreference"
                       target="blank"
                       href={entry.reference.value}
                     >
@@ -185,16 +205,11 @@ const ColorfulResume = ({ resume }: Props) => {
                   </>
                 )}
               </p>
-              <p className="pl-4">{entry.description.value}</p>
             </Col>
             <Col
-              className="pb-0 border border-dark border-bottom-0 border-top-0 border-right-0"
-              xs={2}
+              className=" pb-0 pt-3 pb-3 border border-dark border-bottom-0 border-top-0 border-right-0"
+              xs={12}
             ></Col>
-            <Col xs={8}>
-              <hr />
-            </Col>
-            <Col xs={2}></Col>
           </Row>
         );
       })}

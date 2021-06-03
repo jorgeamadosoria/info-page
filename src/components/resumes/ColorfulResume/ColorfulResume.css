@@ -1,13 +1,100 @@
-.timeline-icon {
+.colorful-timeline-icon {
     border-radius:50%;
-    background-color: white;
     position: relative;
     float:left;
     left: -35px;
+    top: -20px;
     width: 40px;
     text-align: center;
+    z-index:200;
 }
 
-div {
-    background-color: lightgreen;
+.contact-image {
+    max-width:25px;
+}
+
+.colorful-entry {
+    border-radius: 0 25px 25px 0;
+}
+
+.colorful-work {
+    background-color:#DFE7FD;
+}
+
+.colorful-work-icon {
+    color: #7094F9;
+}
+
+.colorful-education {
+    background-color: #E2ECE9;
+}
+
+.colorful-education-icon {
+    color: #93B8AD;
+}
+
+.colorful-volunteering {
+    background-color: #FDE2E4;
+}
+
+.colorful-volunteering-icon {
+    color:#F4626C;
+}
+
+.colorful-certification {
+   background-color: #FFF1E6; 
+}
+
+.colorful-certification-icon {
+    color:#FFA25B;
+}
+
+.colorful-skill-senior {
+    background-color: #6cb8c6;
+    width: 100%;
+}
+
+.colorful-skill-intermediate {
+    background-color: #a7d5dd;
+    width: 100%;
+}
+
+.colorful-skill-junior {
+    background-color: #e2f1f4;
+    width: 100%;
+}
+
+.colorful-entry-header {
+    top: -12px;
+    left:-41px;
+    position:relative;
+    border-radius: 0 25px 25px 0;
+    z-index:100;
+    line-height: 1.5;
+min-width:50%;
+max-width:50%;
+}
+
+.colorfulreference {
+  color: #292b2c !important; 
+  text-decoration: underline;
+}
+
+.colorful-native {
+    background-color:#225158 !important;
+}
+
+.colorful-proficient {
+    background-color:#2e6c76 !important;
+}
+
+.colorful-intermediate {
+    background-color:#398793 !important;
+}
+
+.colorful-beginner {
+    background-color:#45A2B0 !important;
+}
+.colorful-basic {
+    background-color:#5DB3C0 !important;
 }

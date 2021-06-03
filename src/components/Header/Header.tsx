@@ -1,15 +1,16 @@
 import React from "react";
 import "./Header.css";
-import { Container, Navbar, Nav, NavDropdown } from "react-bootstrap";
+import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFirstdraft, faGithub } from "@fortawesome/free-brands-svg-icons";
-import {
-  faFilePdf,
-  faInfoCircle,
-  faSlidersH,
-} from "@fortawesome/free-solid-svg-icons";
+import { faFilePdf, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
-const Header = () => {
+export type HeaderProps = {
+  format: string;
+};
+
+const Header = ({ format }: HeaderProps) => {
   return (
     <Navbar fixed="top" bg="light" expand="lg">
       <Navbar.Brand href="#home">Résumé</Navbar.Brand>
@@ -25,32 +26,23 @@ const Header = () => {
             }
             id="navbarScrollingDropdown"
           >
-            <NavDropdown.Item href="#action3" active>
-              Flat
+            <NavDropdown.Item href="#action3">
+              <Link to="/flat">Flat</Link>
             </NavDropdown.Item>
-            <NavDropdown.Item href="#action4">Colorful</NavDropdown.Item>
-            <NavDropdown.Item href="#action5">Left Rail</NavDropdown.Item>
-            <NavDropdown.Item href="#action5">Compact</NavDropdown.Item>
-          </NavDropdown>
-          <NavDropdown
-            title={
-              <>
-                <FontAwesomeIcon icon={faSlidersH} />
-                &nbsp;&nbsp;Detail
-              </>
-            }
-            id="navbarScrollingDropdown"
-          >
-            <NavDropdown.Item href="#action-1" active>
-              Full info
+            <NavDropdown.Item href="#action4">
+              <Link to="/colorful">Colorful</Link>
             </NavDropdown.Item>
-            <NavDropdown.Item href="#/action-3">Standard</NavDropdown.Item>
-            <NavDropdown.Item href="#/action-3">Essentials</NavDropdown.Item>
+            <NavDropdown.Item href="#action5">
+              <Link to="/leftrail">Left Rail</Link>
+            </NavDropdown.Item>
+            <NavDropdown.Item href="#action5">
+              <Link to="/compact">Compact</Link>
+            </NavDropdown.Item>
           </NavDropdown>
           <Nav.Link href="#pdf">
             <div className="nav-item">
               <FontAwesomeIcon icon={faFilePdf} />
-              &nbsp;&nbsp;Download
+              &nbsp;&nbsp;<Link to={format}>Download</Link>
             </div>
           </Nav.Link>
           <Nav.Link href="#github">

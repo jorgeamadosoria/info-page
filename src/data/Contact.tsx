@@ -1,22 +1,18 @@
-import Relevance from "./enums/Relevance";
+import Relevance, { getRelevance } from "./enums/Relevance";
 class Contact {
-  type: string;
-  name: string;
-  url: string;
-  relevance: number;
+  type: string = "";
+  name: string = "";
+  url: string = "";
+  relevance: Relevance = Relevance.UNDEFINED;
 
-  constructor(
-    name: string = "place of residence",
-    type: string = "telephone",
-    url: string = "http://google.com",
-    relevance: number = Relevance.TRIVIAL
-  ) {
-    this.name = name;
-    this.type = type;
-    this.url = url;
-    this.relevance = relevance;
+  constructor(json: any) {
+    if (json) {
+      this.name = json.name;
+      this.type = json.type;
+      this.url = json.url;
+      this.relevance = getRelevance(json.relevance);
+    }
   }
 }
 
-export const CONTACT_DEFAULT = new Contact();
 export default Contact;
