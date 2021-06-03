@@ -17,4 +17,8 @@ export const getSocialType = (value: string) => {
   return SocialType.OTHER;
 };
 
+export const isSocialType = (value: string): boolean => {
+  return getSocialType(value) !== SocialType.OTHER;
+};
+
 export default SocialType;
