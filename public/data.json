@@ -15,6 +15,7 @@
       "name": "Facundia Demo",
       "description": "Web demo for Facundia, a Java library built to conjugate verbs following Spanish language grammar rules.",
       "language": "ES",
+      "type": "web",
       "relevance": 2
     },
     {
@@ -22,20 +23,23 @@
       "name": "Hanoi Towers Demo",
       "description": "HTML demo to showcase a non recursive optimal solution to the Hanoi Towers classic problem.",
       "language": "EN",
+      "type": "web",
       "relevance": 1
     },
     {
       "url": "https://sites.google.com/view/media-cubana/home",
       "name": "Cuban Media",
-      "description": "Zero code free catalogue of Cuban movies and documentaries, hosted on several video sites. Not comprehensive, but always growing.",
+      "description": "Zero code free catalogue of Cuban movies, hosted on several video sites.",
       "language": "ES",
+      "type": "web",
       "relevance": 3
     },
     {
       "url": "https://monty-hall-demo.herokuapp.com/",
       "name": "Monty Hall Demo",
-      "description": "HTML demo to show case the statistical significance of the solution for the three door selection. ",
+      "description": "HTML demo to show case the statistical significance of the solution for the three door selection. HTML demo to show case the statistical significance of the solution for the three door selection. HTML demo to show case the statistical significance of the solution for the three door selection. HTML demo to show case the statistical significance of the solution for the three door selection. ",
       "language": "EN",
+      "type": "app",
       "relevance": 1
     }
   ],

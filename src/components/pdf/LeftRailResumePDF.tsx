@@ -43,8 +43,16 @@ import { isSocialType } from "../../data/enums/SocialType";
 const styles = StyleSheet.create(flatStyles());
 
 const LeftRailResumePDF = ({ resume, relevance }: ResumeProps) => {
-  const { name, positions, summary, contacts, languages, skills, entries } =
-    resume.prepareResume(relevance);
+  const {
+    name,
+    positions,
+    showcase,
+    summary,
+    contacts,
+    languages,
+    skills,
+    entries,
+  } = resume.prepareResume(relevance);
   const joinedPositions = positions
     .map((position) => position.value)
     .join(", ");

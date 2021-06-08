@@ -36,15 +36,26 @@ import {
   b,
   color,
   left,
+  top,
+  bt,
 } from "./PDFUtils";
 import { isSocialType } from "../../data/enums/SocialType";
+import ShowCaseType from "../../data/enums/ShowCaseType";
 
 // Create styles
 const styles = StyleSheet.create(flatStyles());
 
 const FlatResumePDF = ({ resume, relevance }: ResumeProps) => {
-  const { name, positions, summary, contacts, languages, skills, entries } =
-    resume.prepareResume(relevance);
+  const {
+    name,
+    positions,
+    showcase,
+    summary,
+    contacts,
+    languages,
+    skills,
+    entries,
+  } = resume.prepareResume(relevance);
   const joinedPositions = positions
     .map((position) => position.value)
     .join(", ");
@@ -185,6 +196,47 @@ const FlatResumePDF = ({ resume, relevance }: ResumeProps) => {
                 </View>
               );
             })}
+          </View>
+          <View style={join(bb("lightgrey", 1), mt(4), mb(4))}></View>
+          <View style={join(pl(10), pr(10), mt(5), ml(10))}>
+            {showcase.map((show, index) => (
+              <View
+                style={join(
+                  pl(1),
+                  mt(10),
+                  mb(10),
+                  pr(1),
+                  b("black", 0),
+                  bt("black", 1),
+                  pt(15)
+                )}
+                key={index}
+              >
+                <View
+                  style={join(
+                    left("45%"),
+                    top(-14),
+                    b("black", 1),
+                    round(),
+                    bg("white"),
+                    pos("absolute"),
+                    centerItems(),
+                    z(1000),
+                    h(30),
+                    w(30),
+                    mr(20),
+                    pl(show.type === ShowCaseType.APP ? 9 : 4),
+                    pt(6)
+                  )}
+                >
+                  {getIcon(show.type)}
+                </View>
+                <Link style={color("black")} src={show.url}>
+                  <Text>{show.name}</Text>
+                </Link>
+                <Text style={fontSize(15)}>{show.description}</Text>
+              </View>
+            ))}
           </View>
         </Page>
       </Document>
