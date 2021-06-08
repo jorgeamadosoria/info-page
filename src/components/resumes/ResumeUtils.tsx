@@ -32,6 +32,8 @@ export const getIcon = (name: String) => {
       return <FontAwesomeIcon icon={faWhatsapp} size="lg" />;
     case "email":
       return <FontAwesomeIcon icon={faEnvelope} size="lg" />;
+    case "portfolio":
+      return <FontAwesomeIcon icon={faBriefcase} size="lg" />;
     case SocialType.GITHUB:
       return <FontAwesomeIcon icon={faGithub} size="lg" />;
     case SocialType.FACEBOOK:

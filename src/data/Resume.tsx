@@ -4,11 +4,13 @@ import Skill from "./Skill";
 import Entry from "./Entry";
 import Relevance from "./enums/Relevance";
 import Datum from "./Datum";
+import Showcase from "./Showcase";
 
 class Resume {
   name: Datum = new Datum(null);
   positions: Array<Datum> = new Array<Datum>();
   summary: Datum = new Datum(null);
+  showcase: Array<Showcase> = new Array<Showcase>();
   contacts: Array<Contact> = new Array<Contact>();
   languages: Array<Language> = new Array<Language>();
   skills: Array<Skill> = new Array<Skill>();
@@ -20,6 +22,7 @@ class Resume {
       this.name = new Datum(json.name);
       this.positions = json.positions.map((e: any) => new Datum(e));
       this.summary = new Datum(json.summary);
+      this.showcase = json.showcase.map((e: any) => new Showcase(e));
       this.contacts = json.contacts.map((e: any) => new Contact(e));
       this.languages = json.languages.map((e: any) => new Language(e));
       this.skills = json.skills.map((e: any) => new Skill(e));
@@ -28,19 +31,17 @@ class Resume {
   }
 
   prepareResume(relevance: Relevance = Relevance.TRIVIAL): Resume {
+    const filterRelevance = (e: any) => e.relevance <= relevance;
     this.name.clear(relevance);
     this.positions = this.positions.filter((e) => e.clear(relevance));
     this.summary.clear(relevance);
-    this.contacts = this.contacts.filter((e1) => e1.relevance <= relevance);
-    this.languages = this.languages
-      .filter((e1) => e1.relevance <= relevance)
-      .sort(Language.sort);
-    this.skills = this.skills
-      .filter((e1) => e1.relevance <= relevance)
-      .sort(Skill.sort);
+    this.showcase = this.showcase.filter(filterRelevance);
+    this.contacts = this.contacts.filter(filterRelevance);
+    this.languages = this.languages.filter(filterRelevance).sort(Language.sort);
+    this.skills = this.skills.filter(filterRelevance).sort(Skill.sort);
     this.entries = this.entries
-      .filter((e1) => e1.relevance <= relevance) //filters the entries array
-      .map((e1) => e1.filter(relevance)) // filters the datums inside each entry
+      .filter(filterRelevance) //filters the entries array
+      .map((e) => e.filter(relevance)) // filters the datums inside each entry
       .sort(Entry.sort);
     this.format = "flat";
     return this;

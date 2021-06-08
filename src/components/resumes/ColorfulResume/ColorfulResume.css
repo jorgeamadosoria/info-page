@@ -84,6 +84,14 @@ max-width:50%;
     background-color:#225158 !important;
 }
 
+.colorful-portfolio-bg {
+    background-color: #ffd1c2 !important;
+}
+
+.colorful-portfolio-border {
+    border-color: #ffd1c2 !important;
+}
+
 .colorful-proficient {
     background-color:#2e6c76 !important;
 }

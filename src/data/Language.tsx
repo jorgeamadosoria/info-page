@@ -14,7 +14,7 @@ class Language {
     }
   }
 
-  private static levelNumber = (level: LanguageLevel) => {
+  public static levelNumber = (level: LanguageLevel) => {
     switch (level) {
       case LanguageLevel.NATIVE:
         return 5;

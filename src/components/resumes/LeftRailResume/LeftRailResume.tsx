@@ -1,144 +1,178 @@
 import React from "react";
 import "./LeftRailResume.css";
-import { Container, Row, Col, Card, ListGroup } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Card,
+  ListGroup,
+  ProgressBar,
+} from "react-bootstrap";
 import EntryType from "../../../data/enums/EntryType";
 import { getIcon, ResumeProps } from "../ResumeUtils";
+import Language from "../../../data/Language";
 
 const LeftRailResume = ({ resume, relevance }: ResumeProps) => {
-  const { name, positions, summary, contacts, languages, skills, entries } =
-    resume.prepareResume(relevance);
+  const {
+    name,
+    positions,
+    summary,
+    showcase,
+    contacts,
+    languages,
+    skills,
+    entries,
+  } = resume.prepareResume(relevance);
   const joinedPositions = positions
     .map((position) => position.value)
     .join(", ");
 
   return (
-    <Container fluid>
-      <Row className="pt-2">
-        <Col xs={12}>
-          <h3>{name.value}</h3>
-          <Card.Subtitle className="mb-2 text-muted">
+    <Container
+      fluid
+      className="mt-4 leftrail-rounded bg-secondary border border-secondary"
+    >
+      <Row>
+        <Col xs={4} className="p-0 text-light">
+          <h2 className="ml-4 mt-2">{name.value}</h2>
+          <Card.Subtitle className="ml-4 mb-2">
             <i>{joinedPositions}</i>
           </Card.Subtitle>
-        </Col>
-      </Row>
-      <Row className="pt-2">
-        <Col className="pl-3 pr-1" xs={5}>
-          {summary.value}
-        </Col>
-        <Col
-          className="border border-dark border-bottom-0 border-top-0 border-right-0"
-          xs={4}
-        >
-          <Row className="pl-3 pr-1 ">
+          <div className="h3 pl-4 bg-dark ">Personal Info</div>
+          <ListGroup variant="flush">
             {contacts.map((contact, index) => (
-              <Col xs={6} className="p-1 border-0" key={index}>
-                <p className="text-break">
-                  {contact.url && (
-                    <a className="text-dark" target="blank" href={contact.url}>
-                      {getIcon(contact.type)} &nbsp;&nbsp;&nbsp;
-                      <span className="text-break">{contact.name}</span>
-                    </a>
-                  )}
-                  {!contact.url && (
-                    <>
-                      {getIcon(contact.type)} &nbsp;&nbsp;&nbsp;
-                      <span className="text-break">{contact.name}</span>
-                    </>
-                  )}
-                </p>
-              </Col>
+              <ListGroup.Item
+                className="ml-2 bg-secondary text-light border-0"
+                key={index}
+              >
+                {contact.url && (
+                  <a className="text-light" target="blank" href={contact.url}>
+                    {getIcon(contact.type)} &nbsp;&nbsp;&nbsp;
+                    <span className="text-break">{contact.name}</span>
+                  </a>
+                )}
+                {!contact.url && (
+                  <>
+                    {getIcon(contact.type)} &nbsp;&nbsp;&nbsp;
+                    <span className="text-break">{contact.name}</span>
+                  </>
+                )}
+              </ListGroup.Item>
             ))}
-          </Row>
-        </Col>
-        <Col
-          className="pl-3 pr-1 border border-dark border-bottom-0 border-top-0 border-right-0"
-          xs={2}
-        >
+          </ListGroup>
+          <div className="h3 pl-4 bg-dark ">Languages</div>
           <ListGroup variant="flush">
             {languages.map((language, index) => (
-              <ListGroup.Item className="p-0 border-bottom-0 " key={index}>
-                <p className="text-break">
-                  {language.code}&nbsp;&nbsp;
-                  <i>{language.level}</i>
-                </p>
+              <ListGroup.Item
+                className="ml-2 bg-secondary text-light border-0"
+                key={index}
+              >
+                <b>{language.code}</b>&nbsp;&nbsp;
+                <i>{language.level}</i>
+                <ProgressBar
+                  className=" bg-secondary text-light leftrail-progress mt-1"
+                  now={Language.levelNumber(language.level) * 20}
+                />
+              </ListGroup.Item>
+            ))}
+          </ListGroup>
+          <div className="h3 pl-4 bg-dark ">Skills</div>
+          <ListGroup variant="flush">
+            {skills.map((skill, index) => (
+              <ListGroup.Item
+                className="ml-2 bg-secondary text-light border-0 "
+                key={index}
+              >
+                <b>{skill.name}</b>
+                &nbsp;<i>({skill.level})</i>
+              </ListGroup.Item>
+            ))}
+          </ListGroup>
+          <div className="h3 pl-4 bg-dark ">Portfolio</div>
+          <ListGroup variant="flush">
+            {showcase.map((show, index) => (
+              <ListGroup.Item
+                className="ml-2 bg-secondary text-light border-0 "
+                key={index}
+              >
+                <a target="blank" className="text-light" href={show.url}>
+                  <span>
+                    {show.name}
+                    &nbsp;<i>({show.language})</i>
+                  </span>
+                </a>
               </ListGroup.Item>
             ))}
           </ListGroup>
         </Col>
-      </Row>
-      <Row>
-        <Col xs={12}>
+        <Col xs={8} className="pt-2 leftrail-rounded-right bg-light">
+          {summary.value}
           <hr />
-        </Col>
-        {skills.map((skill, index) => (
-          <Col xs={12} sm={6} md={4} lg={2} key={index}>
-            <b>{skill.name}</b>
-            &nbsp;<i>({skill.level})</i>
-          </Col>
-        ))}
-      </Row>
-      <Row>
-        <Col xs={12}>
+          <div className="h3">Professional Timeline</div>
           <hr />
+          {entries.map((entry, index) => {
+            const refText =
+              entry.type !== EntryType.CERTIFICATION
+                ? entry.reference.value
+                : null;
+
+            return (
+              <Row key={index} className="ml-3">
+                <Col
+                  xs={12}
+                  className="pb-0 border border-dark border-bottom-0 border-top-0 border-right-0"
+                >
+                  <div className="position-relative mx-auto leftrail-timeline-icon border p-2 border-dark">
+                    {getIcon(entry.type)}
+                  </div>
+
+                  <p className="mt-2">
+                    {new Date(entry.fromDate).toLocaleDateString()}
+                    {entry.toDate &&
+                      " -> ".concat(
+                        new Date(entry.toDate).toLocaleDateString()
+                      )}
+                  </p>
+                  <p className="pl-4">
+                    {entry.name}&nbsp;@&nbsp;
+                    {refText && (
+                      <a
+                        className="text-dark"
+                        target="blank"
+                        href={entry.reference.value}
+                      >
+                        {entry.entity}
+                      </a>
+                    )}
+                    {!refText && (
+                      <>
+                        {entry.entity}
+                        &nbsp;&nbsp;
+                        <a
+                          className="text-dark"
+                          target="blank"
+                          href={entry.reference.value}
+                        >
+                          Reference
+                        </a>
+                      </>
+                    )}
+                  </p>
+                  <p className="pl-4">{entry.description.value}</p>
+                </Col>
+                <Col
+                  className="pb-0 border border-dark border-bottom-0 border-top-0 border-right-0"
+                  xs={2}
+                ></Col>
+                <Col xs={8}>
+                  <hr />
+                </Col>
+                <Col xs={2}></Col>
+              </Row>
+            );
+          })}
         </Col>
       </Row>
-      {entries.map((entry, index) => {
-        const refText =
-          entry.type !== EntryType.CERTIFICATION ? entry.reference.value : null;
-
-        return (
-          <Row key={index} className="ml-3">
-            <Col
-              xs={12}
-              className="pb-0 border border-dark border-bottom-0 border-top-0 border-right-0"
-            >
-              <div className="position-relative mx-auto leftrail-timeline-icon border p-2 border-dark">
-                {getIcon(entry.type)}
-              </div>
-
-              <p className="mt-2">
-                {new Date(entry.fromDate).toLocaleDateString()}
-                {entry.toDate &&
-                  " -> ".concat(new Date(entry.toDate).toLocaleDateString())}
-              </p>
-              <p className="pl-4">
-                {entry.name}&nbsp;@&nbsp;
-                {refText && (
-                  <a
-                    className="text-dark"
-                    target="blank"
-                    href={entry.reference.value}
-                  >
-                    {entry.entity}
-                  </a>
-                )}
-                {!refText && (
-                  <>
-                    {entry.entity}
-                    &nbsp;&nbsp;
-                    <a
-                      className="text-dark"
-                      target="blank"
-                      href={entry.reference.value}
-                    >
-                      Reference
-                    </a>
-                  </>
-                )}
-              </p>
-              <p className="pl-4">{entry.description.value}</p>
-            </Col>
-            <Col
-              className="pb-0 border border-dark border-bottom-0 border-top-0 border-right-0"
-              xs={2}
-            ></Col>
-            <Col xs={8}>
-              <hr />
-            </Col>
-            <Col xs={2}></Col>
-          </Row>
-        );
-      })}
     </Container>
   );
 };

@@ -9,12 +9,48 @@
     "value": "15+ years coding in Spring + Hibernate with Oracle / PostgreSQL; 5+ years of performance testing with Neoload / JMeter; passing / working experience in LAMP, jQuery and Bootstrap/CCS3; 1+ years of experience in React.",
     "relevance": 1
   },
+  "showcase": [
+    {
+      "url": "https://facundia-demo.herokuapp.com/",
+      "name": "Facundia Demo",
+      "description": "Web demo for Facundia, a Java library built to conjugate verbs following Spanish language grammar rules.",
+      "language": "ES",
+      "relevance": 2
+    },
+    {
+      "url": "https://hanoi-demo.herokuapp.com/",
+      "name": "Hanoi Towers Demo",
+      "description": "HTML demo to showcase a non recursive optimal solution to the Hanoi Towers classic problem.",
+      "language": "EN",
+      "relevance": 1
+    },
+    {
+      "url": "https://sites.google.com/view/media-cubana/home",
+      "name": "Cuban Media",
+      "description": "Zero code free catalogue of Cuban movies and documentaries, hosted on several video sites. Not comprehensive, but always growing.",
+      "language": "ES",
+      "relevance": 3
+    },
+    {
+      "url": "https://monty-hall-demo.herokuapp.com/",
+      "name": "Monty Hall Demo",
+      "description": "HTML demo to show case the statistical significance of the solution for the three door selection. ",
+      "language": "EN",
+      "relevance": 1
+    }
+  ],
   "contacts": [
     {
       "type": "residence",
       "name": "Mérida, Yucatán, México",
       "url": "",
       "relevance": 3
+    },
+    {
+      "type": "portfolio",
+      "name": "Portfolio",
+      "url": "https://portfolio-jasr.herokuapp.com/",
+      "relevance": 1
     },
     {
       "type": "phone",
@@ -45,7 +81,7 @@
     {
       "code": "French",
       "level": "basic",
-      "relevance": 3
+      "relevance": 2
     },
     {
       "code": "English",

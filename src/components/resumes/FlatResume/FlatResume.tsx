@@ -5,8 +5,16 @@ import EntryType from "../../../data/enums/EntryType";
 import { getIcon, ResumeProps } from "../ResumeUtils";
 
 const FlatResume = ({ resume, relevance }: ResumeProps) => {
-  const { name, positions, summary, contacts, languages, skills, entries } =
-    resume.prepareResume(relevance);
+  const {
+    name,
+    positions,
+    summary,
+    showcase,
+    contacts,
+    languages,
+    skills,
+    entries,
+  } = resume.prepareResume(relevance);
   const joinedPositions = positions
     .map((position) => position.value)
     .join(", ");
@@ -143,6 +151,39 @@ const FlatResume = ({ resume, relevance }: ResumeProps) => {
           </Row>
         );
       })}
+      <Row className="pl-3 pr-1 ">
+        <Col xs={12}>
+          <hr />
+        </Col>
+        <Col xs={12} className="p-1 d-flex border-0">
+          <Row>
+            {showcase.map((show, index) => (
+              <Col
+                sm={12}
+                md={6}
+                lg={4}
+                xl={3}
+                className="p-1 border-0 flex-1"
+                key={index}
+              >
+                <a target="blank" className="text-dark" href={show.url}>
+                  <Card className="h-100">
+                    <Card.Header>
+                      <Card.Title className="m-0">
+                        <span className="fs-4">{show.name}</span>
+                      </Card.Title>
+                    </Card.Header>
+                    <Card.Body>{show.description}</Card.Body>
+                    <Card.Footer className="d-flex align-items-end flex-grow-0 flex-shrink-1">
+                      <span className="small">{show.language}</span>
+                    </Card.Footer>
+                  </Card>
+                </a>
+              </Col>
+            ))}
+          </Row>
+        </Col>
+      </Row>
     </Container>
   );
 };

@@ -6,8 +6,16 @@ import { getIcon, ResumeProps } from "../ResumeUtils";
 import Entry from "../../../data/Entry";
 
 const CompactResume = ({ resume, relevance }: ResumeProps) => {
-  const { name, positions, summary, contacts, languages, skills, entries } =
-    resume.prepareResume(relevance);
+  const {
+    name,
+    positions,
+    summary,
+    showcase,
+    contacts,
+    languages,
+    skills,
+    entries,
+  } = resume.prepareResume(relevance);
   const joinedPositions = positions
     .map((position) => position.value)
     .join(", ");
@@ -87,6 +95,24 @@ const CompactResume = ({ resume, relevance }: ResumeProps) => {
               <div className="pl-1 d-inline-flex" key={index}>
                 <b>{skill.name}</b>
                 &nbsp;<i>({skill.level})</i>
+              </div>
+            ))}
+          </Col>
+          <Col className="ml-1 pl-3 pr-1" xs={12}>
+            <Card.Subtitle className="mb-3 mt-3 text-muted">
+              <hr />
+              Portfolio
+            </Card.Subtitle>
+          </Col>
+          <Col xs={12} className="ml-1 pl-3">
+            {showcase.map((show, index) => (
+              <div
+                className="pl-1 pr-1 border-dark border border-left-1 border-top-0 border-bottom-0 border-end-1 d-inline-flex"
+                key={index}
+              >
+                <a target="blank" className="text-dark" href={show.url}>
+                  {show.name}
+                </a>
               </div>
             ))}
           </Col>

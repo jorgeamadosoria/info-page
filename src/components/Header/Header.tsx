@@ -39,7 +39,7 @@ const Header = ({ format }: HeaderProps) => {
               <Link to="/compact">Compact</Link>
             </NavDropdown.Item>
           </NavDropdown>
-          <Nav.Link href="#pdf">
+          <Nav.Link target="blank" href="#pdf">
             <div className="nav-item">
               <FontAwesomeIcon icon={faFilePdf} />
               &nbsp;&nbsp;<Link to={format}>Download</Link>

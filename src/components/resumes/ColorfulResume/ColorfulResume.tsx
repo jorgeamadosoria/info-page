@@ -31,6 +31,8 @@ const getIcon = (name: String) => {
       return <FontAwesomeIcon icon={faWhatsapp} color="#25d366" size="lg" />;
     case "email":
       return <FontAwesomeIcon icon={faEnvelope} color="#ffa930" size="lg" />;
+    case "portfolio":
+      return <FontAwesomeIcon icon={faBriefcase} color="#601700" size="lg" />;
     case SocialType.GITHUB:
       return <FontAwesomeIcon icon={faGithub} color="#333" size="lg" />;
     case SocialType.FACEBOOK:
@@ -48,8 +50,16 @@ const getIcon = (name: String) => {
   }
 };
 const ColorfulResume = ({ resume, relevance }: ResumeProps) => {
-  const { name, positions, summary, contacts, languages, skills, entries } =
-    resume.prepareResume(relevance);
+  const {
+    name,
+    positions,
+    summary,
+    showcase,
+    contacts,
+    languages,
+    skills,
+    entries,
+  } = resume.prepareResume(relevance);
   const joinedPositions = positions
     .map((position) => position.value)
     .join(", ");
@@ -213,6 +223,39 @@ const ColorfulResume = ({ resume, relevance }: ResumeProps) => {
           </Row>
         );
       })}
+      <Row className="pl-3 pr-1 ">
+        <Col xs={12}>
+          <hr />
+        </Col>
+        <Col xs={12} className="p-1 d-flex border-0">
+          <Row>
+            {showcase.map((show, index) => (
+              <Col
+                sm={12}
+                md={6}
+                lg={4}
+                xl={3}
+                className="p-1 border-0 flex-1"
+                key={index}
+              >
+                <a target="blank" className="text-dark" href={show.url}>
+                  <Card className="colorful-portfolio-border h-100">
+                    <Card.Header className="colorful-portfolio-bg">
+                      <Card.Title className="m-0">
+                        <span className="fs-4">{show.name}</span>
+                      </Card.Title>
+                    </Card.Header>
+                    <Card.Body>{show.description}</Card.Body>
+                    <Card.Footer className="colorful-portfolio-bg d-flex align-items-end flex-grow-0 flex-shrink-1">
+                      <span className="small">{show.language}</span>
+                    </Card.Footer>
+                  </Card>
+                </a>
+              </Col>
+            ))}
+          </Row>
+        </Col>
+      </Row>
     </Container>
   );
 };
