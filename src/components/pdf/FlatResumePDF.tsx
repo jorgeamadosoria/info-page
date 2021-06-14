@@ -180,18 +180,26 @@ const FlatResumePDF = ({ resume, relevance }: ResumeProps) => {
                         )}
                       </Text>
                     ) : (
-                      <Text style={ml(10)}>
-                        {entry.entity}
-                        &nbsp;&nbsp;
-                        {entry.reference.value && (
-                          <Link src={entry.reference.value}>Reference</Link>
-                        )}
-                      </Text>
+                      <Text style={ml(10)}>{entry.entity}</Text>
                     )}
                   </Text>
                   <Text style={join(ml(10), mt(2), fontSize(15))}>
                     {entry.description.value}
                   </Text>
+                  {entry.type === EntryType.CERTIFICATION &&
+                    entry.reference.value && (
+                      <Link
+                        style={join(
+                          color("black"),
+                          ml(10),
+                          mt(2),
+                          fontSize(15)
+                        )}
+                        src={entry.reference.value}
+                      >
+                        <Text>Reference</Text>
+                      </Link>
+                    )}
                   <View style={join(w(400), mt(6), mb(6))}></View>
                 </View>
               );

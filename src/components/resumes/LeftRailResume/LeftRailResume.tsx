@@ -11,7 +11,7 @@ import {
 import EntryType from "../../../data/enums/EntryType";
 import { getIcon, ResumeProps } from "../ResumeUtils";
 import Language from "../../../data/Language";
-
+import IconColor from "../../../data/enums/IconColor";
 const LeftRailResume = ({ resume, relevance }: ResumeProps) => {
   const {
     name,
@@ -47,13 +47,13 @@ const LeftRailResume = ({ resume, relevance }: ResumeProps) => {
               >
                 {contact.url && (
                   <a className="text-light" target="blank" href={contact.url}>
-                    {getIcon(contact.type)} &nbsp;&nbsp;&nbsp;
+                    {getIcon(contact.type, IconColor.WHITE)} &nbsp;&nbsp;&nbsp;
                     <span className="text-break">{contact.name}</span>
                   </a>
                 )}
                 {!contact.url && (
                   <>
-                    {getIcon(contact.type)} &nbsp;&nbsp;&nbsp;
+                    {getIcon(contact.type, IconColor.WHITE)} &nbsp;&nbsp;&nbsp;
                     <span className="text-break">{contact.name}</span>
                   </>
                 )}
@@ -70,7 +70,7 @@ const LeftRailResume = ({ resume, relevance }: ResumeProps) => {
                 <b>{language.code}</b>&nbsp;&nbsp;
                 <i>{language.level}</i>
                 <ProgressBar
-                  className=" bg-secondary text-light leftrail-progress mt-1"
+                  className="mt-1"
                   now={Language.levelNumber(language.level) * 20}
                 />
               </ListGroup.Item>
@@ -92,14 +92,13 @@ const LeftRailResume = ({ resume, relevance }: ResumeProps) => {
           <ListGroup variant="flush">
             {showcase.map((show, index) => (
               <ListGroup.Item
-                className="ml-2 bg-secondary text-light border-0 "
+                className="ml-2 bg-secondary text-light border-0"
                 key={index}
               >
-                <a target="blank" className="text-light" href={show.url}>
-                  <span>
-                    {show.name}
-                    &nbsp;<i>({show.language})</i>
-                  </span>
+                <a className="text-light" target="blank" href={show.url}>
+                  <span>{getIcon(show.type, IconColor.WHITE)}</span>{" "}
+                  &nbsp;&nbsp;&nbsp;
+                  <span className="text-break">{show.name}</span>
                 </a>
               </ListGroup.Item>
             ))}
@@ -122,7 +121,7 @@ const LeftRailResume = ({ resume, relevance }: ResumeProps) => {
                   xs={12}
                   className="pb-0 border border-dark border-bottom-0 border-top-0 border-right-0"
                 >
-                  <div className="position-relative mx-auto leftrail-timeline-icon border p-2 border-dark">
+                  <div className="leftrail-timeline-icon border p-2 border-dark">
                     {getIcon(entry.type)}
                   </div>
 
@@ -133,7 +132,7 @@ const LeftRailResume = ({ resume, relevance }: ResumeProps) => {
                         new Date(entry.toDate).toLocaleDateString()
                       )}
                   </p>
-                  <p className="pl-4">
+                  <p className="pl-5">
                     {entry.name}&nbsp;@&nbsp;
                     {refText && (
                       <a

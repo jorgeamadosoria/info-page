@@ -23,6 +23,7 @@
     "react-bootstrap": "^1.6.0",
     "react-dom": "^17.0.2",
     "react-intl": "^5.18.1",
+    "react-json-pretty": "^2.2.0",
     "react-pdf": "^5.3.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
@@ -65,6 +66,7 @@
     ]
   },
   "devDependencies": {
+    "@types/react-json-pretty": "^2.2.0",
     "@types/react-router-dom": "^5.1.7"
   }
 }

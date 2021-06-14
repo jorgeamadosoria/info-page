@@ -3,8 +3,7 @@
     background-color: white;
     position: relative;
     float:left;
-    left: -35px;
-    width: 40px;
+    left: -38px;
     text-align: center;
 }
 
@@ -18,5 +17,12 @@
 
 /* overriding bootstrap class */
 .progress-bar {
-    background-color: #343a40 !important;
+    height: inherit;
+    background-color: white !important;
+}
+
+/* overriding bootstrap class */
+.progress {
+    height: 4px !important;
+    background-color: #333b3f !important;
 }

@@ -4,7 +4,7 @@ class Language {
   code: string = "";
   shortLevel: string = "";
   level: LanguageLevel = LanguageLevel.OTHER;
-  relevance: Relevance = Relevance.UNDEFINED;
+  relevance: Relevance = Relevance.TRIVIAL;
   constructor(json: any) {
     if (json) {
       this.code = json.code;

@@ -3,7 +3,11 @@ import "./Header.css";
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFirstdraft, faGithub } from "@fortawesome/free-brands-svg-icons";
-import { faFilePdf, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
+import {
+  faBriefcase,
+  faFilePdf,
+  faInfoCircle,
+} from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
 export type HeaderProps = {
@@ -26,32 +30,50 @@ const Header = ({ format }: HeaderProps) => {
             }
             id="navbarScrollingDropdown"
           >
-            <NavDropdown.Item href="#action3">
-              <Link to="/flat">Flat</Link>
+            <NavDropdown.Item href="flat">
+              <Link className="text-decoration-none text-dark" to="/flat">
+                Flat
+              </Link>
             </NavDropdown.Item>
-            <NavDropdown.Item href="#action4">
-              <Link to="/colorful">Colorful</Link>
+            <NavDropdown.Item href="colorful">
+              <Link className="text-decoration-none text-dark" to="/colorful">
+                Colorful
+              </Link>
             </NavDropdown.Item>
-            <NavDropdown.Item href="#action5">
-              <Link to="/leftrail">Left Rail</Link>
+            <NavDropdown.Item href="leftrail">
+              <Link className="text-decoration-none text-dark" to="/leftrail">
+                Left Rail
+              </Link>
             </NavDropdown.Item>
-            <NavDropdown.Item href="#action5">
-              <Link to="/compact">Compact</Link>
+            <NavDropdown.Item href="compact">
+              <Link className="text-decoration-none text-dark" to="/compact">
+                Compact
+              </Link>
             </NavDropdown.Item>
           </NavDropdown>
           <Nav.Link target="blank" href="#pdf">
             <div className="nav-item">
               <FontAwesomeIcon icon={faFilePdf} />
-              &nbsp;&nbsp;<Link to={format}>Download</Link>
+              &nbsp;&nbsp;
+              <Link className="text-decoration-none text-dark" to={format}>
+                PDF
+              </Link>
             </div>
           </Nav.Link>
-          <Nav.Link href="#github">
+          <Nav.Link target="blank" href="#github">
             <FontAwesomeIcon icon={faGithub} />
-            &nbsp;&nbsp;Repository
+            &nbsp;&nbsp;Repo
           </Nav.Link>
+          <Nav.Link target="blank" href="https://portfolio-jasr.herokuapp.com/">
+            <FontAwesomeIcon icon={faBriefcase} />
+            &nbsp;&nbsp;Portfolio
+          </Nav.Link>
+
           <Nav.Link href="#about">
-            <FontAwesomeIcon icon={faInfoCircle} />
-            &nbsp;&nbsp;About
+            <Link className="text-decoration-none text-dark" to="/about">
+              <FontAwesomeIcon icon={faInfoCircle} />
+              &nbsp;&nbsp;About
+            </Link>
           </Nav.Link>
         </Nav>
       </Navbar.Collapse>

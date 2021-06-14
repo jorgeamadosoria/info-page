@@ -10,6 +10,7 @@ import {
 } from "@react-pdf/renderer";
 import { ResumeProps } from "../resumes/ResumeUtils";
 import EntryType from "../../data/enums/EntryType";
+import IconColor from "../../data/enums/IconColor";
 import {
   getIcon,
   flatStyles,
@@ -38,7 +39,7 @@ import {
   left,
 } from "./PDFUtils";
 import { isSocialType } from "../../data/enums/SocialType";
-
+import ShowCaseType from "../../data/enums/ShowCaseType";
 // Create styles
 const styles = StyleSheet.create(flatStyles());
 
@@ -83,7 +84,7 @@ const LeftRailResumePDF = ({ resume, relevance }: ResumeProps) => {
             </View>
             <View>
               {contacts.map((contact, index) => (
-                <View style={ml(32)}>
+                <View style={ml(32)} key={index}>
                   <View
                     style={join(
                       left(-30),
@@ -97,21 +98,24 @@ const LeftRailResumePDF = ({ resume, relevance }: ResumeProps) => {
                       pl(5)
                     )}
                   >
-                    {getIcon(contact.type, "white")}
+                    {getIcon(contact.type, IconColor.WHITE)}
                   </View>
-                  <Text style={join(fontSize(12), mt(4), mb(4))} key={index}>
+                  <View style={pt(5)}>
                     {contact.url ? (
-                      <Link style={color("white")} src={contact.url}>
-                        {isSocialType(contact.type) ? (
-                          <Text>{contact.url}</Text>
-                        ) : (
-                          <Text>{contact.name}</Text>
-                        )}
+                      <Link
+                        style={join(color("white"), fontSize(12))}
+                        src={contact.url}
+                      >
+                        <Text style={color("white")}>
+                          {isSocialType(contact.type)
+                            ? contact.url
+                            : contact.name}
+                        </Text>
                       </Link>
                     ) : (
-                      <Text>{contact.name}</Text>
+                      <Text style={color("white")}>{contact.name}</Text>
                     )}
-                  </Text>
+                  </View>
                 </View>
               ))}
             </View>
@@ -159,6 +163,45 @@ const LeftRailResumePDF = ({ resume, relevance }: ResumeProps) => {
                     <Text>{skill.name}</Text>
                     <Text style={fontSize(10)}>&nbsp;({skill.level})</Text>
                   </Text>
+                </View>
+              ))}
+            </View>
+            <View
+              style={join(
+                fontSize(15),
+                bg("black"),
+                color("white"),
+                pl(32),
+                p(4)
+              )}
+            >
+              <Text style={(mt(10), pl(5))}>Portfolio</Text>
+            </View>
+            <View>
+              {showcase.map((show, index) => (
+                <View style={ml(32)} key={index}>
+                  <View
+                    style={join(
+                      left(-30),
+                      pos("absolute"),
+                      centerItems(),
+                      z(1000),
+                      h(30),
+                      pb(10),
+                      pt(6),
+                      pl(show.type === ShowCaseType.WEB ? 5 : 7)
+                    )}
+                  >
+                    {getIcon(show.type, IconColor.WHITE)}
+                  </View>
+                  <View style={pt(5)}>
+                    <Link
+                      style={join(color("white"), fontSize(12))}
+                      src={show.url}
+                    >
+                      <Text>{show.name}</Text>
+                    </Link>
+                  </View>
                 </View>
               ))}
             </View>

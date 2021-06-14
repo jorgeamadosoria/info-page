@@ -107,9 +107,10 @@ const CompactResume = ({ resume, relevance }: ResumeProps) => {
           <Col xs={12} className="ml-1 pl-3">
             {showcase.map((show, index) => (
               <div
-                className="pl-1 pr-1 border-dark border border-left-1 border-top-0 border-bottom-0 border-end-1 d-inline-flex"
+                className="pl-1 pr-1 border-top-0 border-bottom-0 d-inline-flex"
                 key={index}
               >
+                {getIcon(show.type)}
                 <a target="blank" className="text-dark" href={show.url}>
                   {show.name}
                 </a>
@@ -128,7 +129,7 @@ const CompactResume = ({ resume, relevance }: ResumeProps) => {
                   xs={12}
                   className="pb-0 border border-dark border-bottom-0 border-top-0 border-right-0"
                 >
-                  <div className="position-relative mx-auto flat-timeline-icon border p-2 border-dark">
+                  <div className="position-relative mx-auto flat-timeline-icon border p-1 pt-2 pb-2 border-dark">
                     {getIcon(entry.type)}
                   </div>
 
@@ -139,7 +140,7 @@ const CompactResume = ({ resume, relevance }: ResumeProps) => {
                         new Date(entry.toDate).toLocaleDateString()
                       )}
                   </p>
-                  <p className="pl-4">
+                  <p className="pl-4 ml-3">
                     {entry.name}&nbsp;@&nbsp;
                     {entry.type !== EntryType.CERTIFICATION ? (
                       <StandardEntry entry={entry} />

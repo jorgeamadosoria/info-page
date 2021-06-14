@@ -27,6 +27,7 @@ const FlatResume = ({ resume, relevance }: ResumeProps) => {
           <Card.Subtitle className="mb-2 text-muted">
             <i>{joinedPositions}</i>
           </Card.Subtitle>
+          <hr />
         </Col>
       </Row>
       <Row className="pt-2">
@@ -37,7 +38,7 @@ const FlatResume = ({ resume, relevance }: ResumeProps) => {
           className="border border-dark border-bottom-0 border-top-0 border-right-0"
           xs={4}
         >
-          <Row className="pl-3 pr-1 ">
+          <Row className="pl-2 ">
             {contacts.map((contact, index) => (
               <Col
                 xs={contacts.length > 3 ? 6 : 12}
@@ -47,13 +48,13 @@ const FlatResume = ({ resume, relevance }: ResumeProps) => {
                 <p className="text-break">
                   {contact.url && (
                     <a className="text-dark" target="blank" href={contact.url}>
-                      {getIcon(contact.type)} &nbsp;&nbsp;&nbsp;
+                      {getIcon(contact.type)} &nbsp;
                       <span className="text-break">{contact.name}</span>
                     </a>
                   )}
                   {!contact.url && (
                     <>
-                      {getIcon(contact.type)} &nbsp;&nbsp;&nbsp;
+                      {getIcon(contact.type)} &nbsp;
                       <span className="text-break">{contact.name}</span>
                     </>
                   )}
@@ -104,7 +105,7 @@ const FlatResume = ({ resume, relevance }: ResumeProps) => {
               xs={12}
               className="pb-0 border border-dark border-bottom-0 border-top-0 border-right-0"
             >
-              <div className="position-relative mx-auto flat-timeline-icon border p-2 border-dark">
+              <div className="position-relative mx-auto flat-timeline-icon border p-1 pt-2 pb-2 border-dark">
                 {getIcon(entry.type)}
               </div>
 
@@ -113,7 +114,7 @@ const FlatResume = ({ resume, relevance }: ResumeProps) => {
                 {entry.toDate &&
                   " -> ".concat(new Date(entry.toDate).toLocaleDateString())}
               </p>
-              <p className="pl-4">
+              <p className="pl-4 ml-3">
                 {entry.name}&nbsp;@&nbsp;
                 {refText && (
                   <a
@@ -133,12 +134,12 @@ const FlatResume = ({ resume, relevance }: ResumeProps) => {
                       target="blank"
                       href={entry.reference.value}
                     >
-                      Reference
+                      (Reference)
                     </a>
                   </>
                 )}
               </p>
-              <p className="pl-4">{entry.description.value}</p>
+              <p className="pl-4 ml-3 ">{entry.description.value}</p>
             </Col>
             <Col
               className="pb-0 border border-dark border-bottom-0 border-top-0 border-right-0"
@@ -169,7 +170,8 @@ const FlatResume = ({ resume, relevance }: ResumeProps) => {
                 <a target="blank" className="text-dark" href={show.url}>
                   <Card className="h-100">
                     <Card.Header>
-                      <Card.Title className="m-0">
+                      <Card.Title className="m-0 p-0">
+                        {getIcon(show.type)}&nbsp;
                         <span className="fs-4">{show.name}</span>
                       </Card.Title>
                     </Card.Header>

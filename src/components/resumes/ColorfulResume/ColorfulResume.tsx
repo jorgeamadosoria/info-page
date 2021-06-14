@@ -2,53 +2,9 @@ import React from "react";
 import "./ColorfulResume.css";
 import { Container, Row, Col, Card, ListGroup, Badge } from "react-bootstrap";
 import EntryType from "../../../data/enums/EntryType";
-import { ResumeProps } from "../ResumeUtils";
+import { ResumeProps, getIcon } from "../ResumeUtils";
+import IconColor from "../../../data/enums/IconColor";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faFacebook,
-  faGithub,
-  faLinkedin,
-  faWhatsapp,
-} from "@fortawesome/free-brands-svg-icons";
-import {
-  faBriefcase,
-  faCertificate,
-  faEnvelope,
-  faGraduationCap,
-  faHandsHelping,
-  faMapMarkerAlt,
-} from "@fortawesome/free-solid-svg-icons";
-import SocialType from "../../../data/enums/SocialType";
-
-const getIcon = (name: String) => {
-  switch (name) {
-    case "residence":
-      return (
-        <FontAwesomeIcon icon={faMapMarkerAlt} color="#ea4335" size="lg" />
-      );
-    case "phone":
-      return <FontAwesomeIcon icon={faWhatsapp} color="#25d366" size="lg" />;
-    case "email":
-      return <FontAwesomeIcon icon={faEnvelope} color="#ffa930" size="lg" />;
-    case "portfolio":
-      return <FontAwesomeIcon icon={faBriefcase} color="#601700" size="lg" />;
-    case SocialType.GITHUB:
-      return <FontAwesomeIcon icon={faGithub} color="#333" size="lg" />;
-    case SocialType.FACEBOOK:
-      return <FontAwesomeIcon icon={faFacebook} color="#3b5998" size="lg" />;
-    case SocialType.LINKEDIN:
-      return <FontAwesomeIcon icon={faLinkedin} color="#00a0dc" size="lg" />;
-    case EntryType.WORK:
-      return <FontAwesomeIcon icon={faBriefcase} size="lg" />;
-    case EntryType.EDUCATION:
-      return <FontAwesomeIcon icon={faGraduationCap} size="lg" />;
-    case EntryType.VOLUNTEERING:
-      return <FontAwesomeIcon icon={faHandsHelping} size="lg" />;
-    case EntryType.CERTIFICATION:
-      return <FontAwesomeIcon icon={faCertificate} size="lg" />;
-  }
-};
 const ColorfulResume = ({ resume, relevance }: ResumeProps) => {
   const {
     name,
@@ -83,19 +39,19 @@ const ColorfulResume = ({ resume, relevance }: ResumeProps) => {
           className="border border-dark border-bottom-0 border-top-0 border-right-0"
           xs={4}
         >
-          <Row className="pl-3 pr-1">
+          <Row className="pl-2">
             {contacts.map((contact, index) => (
               <Col xs={6} className="p-1 border-0" key={index}>
                 <p className="text-break">
                   {contact.url && (
                     <a className="text-dark" target="blank" href={contact.url}>
-                      {getIcon(contact.type)} &nbsp;&nbsp;&nbsp;
+                      {getIcon(contact.type, IconColor.COLOR)} &nbsp;
                       <span className="text-break">{contact.name}</span>
                     </a>
                   )}
                   {!contact.url && (
                     <>
-                      {getIcon(contact.type)} &nbsp;&nbsp;&nbsp;
+                      {getIcon(contact.type, IconColor.COLOR)} &nbsp;
                       <span className="text-break">{contact.name}</span>
                     </>
                   )}
@@ -166,12 +122,10 @@ const ColorfulResume = ({ resume, relevance }: ResumeProps) => {
                 className={
                   "colorful-" +
                   entry.type +
-                  "-icon colorful-" +
-                  entry.type +
-                  " position-relative mx-auto colorful-timeline-icon border p-2 border-dark"
+                  " mx-auto colorful-timeline-icon border p-1 pt-2 pb-2 border-dark"
                 }
               >
-                {getIcon(entry.type)}
+                {getIcon(entry.type, IconColor.COLOR)}
               </div>
               <p
                 className={
@@ -242,6 +196,7 @@ const ColorfulResume = ({ resume, relevance }: ResumeProps) => {
                   <Card className="colorful-portfolio-border h-100">
                     <Card.Header className="colorful-portfolio-bg">
                       <Card.Title className="m-0">
+                        {getIcon(show.type, IconColor.COLOR)}&nbsp;
                         <span className="fs-4">{show.name}</span>
                       </Card.Title>
                     </Card.Header>

@@ -3,7 +3,7 @@ class Contact {
   type: string = "";
   name: string = "";
   url: string = "";
-  relevance: Relevance = Relevance.UNDEFINED;
+  relevance: Relevance = Relevance.TRIVIAL;
 
   constructor(json: any) {
     if (json) {

@@ -15,10 +15,10 @@ import CompactResumePDF from "./components/pdf/CompactResumePDF";
 import ColorfulResumePDF from "./components/pdf/ColorfulResumePDF";
 import FlatResumePDF from "./components/pdf/FlatResumePDF";
 import LeftRailResumePDF from "./components/pdf/LeftRailResumePDF";
+import { About } from "./components/About/About";
 
-function App() {
+function App(props: any) {
   const [resumeState, setResumeState] = useState({ resume: new Resume() });
-
   useEffect(() => {
     fetch("/data.json")
       .then(function (response) {
@@ -40,94 +40,66 @@ function App() {
   }, []);
 
   return (
-    <Router>
-      <Switch>
-        <Route path="/flat">
-          <Container fluid>
-            <Header format="flat-pdf"></Header>
-            <div className="content">
+    <Container fluid>
+      <Router>
+        <Header format="colorful-pdf"></Header>
+        <div className="content">
+          <Switch>
+            <Route path="/flat">
               <FlatResume
                 resume={resumeState.resume}
                 relevance={Relevance.TRIVIAL}
               />
-            </div>
-          </Container>
-        </Route>
-        <Route path="/colorful">
-          <Container fluid>
-            <Header format="colorful-pdf"></Header>
-            <div className="content">
+            </Route>
+            <Route path="/colorful">
               <ColorfulResume
                 resume={resumeState.resume}
                 relevance={Relevance.TRIVIAL}
               />
-            </div>
-          </Container>
-        </Route>
-        <Route path="/leftrail">
-          <Container fluid>
-            <Header format="leftrail-pdf"></Header>
-            <div className="content">
+            </Route>
+            <Route path="/leftrail">
               <LeftRailResume
                 resume={resumeState.resume}
                 relevance={Relevance.STANDARD}
               />
-            </div>
-          </Container>
-        </Route>
-        <Route path="/compact">
-          <Container fluid>
-            <Header format="compact-pdf"></Header>
-            <div className="content">
+            </Route>
+            <Route path="/compact">
               <CompactResume
                 resume={resumeState.resume}
                 relevance={Relevance.ESSENTIAL}
               />
-            </div>
-          </Container>
-        </Route>
-        <Route path="/compact-pdf">
-          <Container fluid>
-            <div className="content">
+            </Route>
+            <Route path="/compact-pdf">
               <CompactResumePDF
                 resume={resumeState.resume}
                 relevance={Relevance.ESSENTIAL}
               />
-            </div>
-          </Container>
-        </Route>
-        <Route path="/colorful-pdf">
-          <Container fluid>
-            <div className="content">
+            </Route>
+            <Route path="/colorful-pdf">
               <ColorfulResumePDF
                 resume={resumeState.resume}
                 relevance={Relevance.TRIVIAL}
               />
-            </div>
-          </Container>
-        </Route>
-        <Route path="/leftrail-pdf">
-          <Container fluid>
-            <div className="content">
+            </Route>
+            <Route path="/leftrail-pdf">
               <LeftRailResumePDF
                 resume={resumeState.resume}
                 relevance={Relevance.STANDARD}
               />
-            </div>
-          </Container>
-        </Route>
-        <Route path="/flat-pdf">
-          <Container fluid>
-            <div className="content">
+            </Route>
+            <Route path="/flat-pdf">
               <FlatResumePDF
                 resume={resumeState.resume}
                 relevance={Relevance.TRIVIAL}
               />
-            </div>
-          </Container>
-        </Route>
-      </Switch>
-    </Router>
+            </Route>
+            <Route path="/about">
+              <About resume={resumeState.resume} />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
+    </Container>
   );
 }
 

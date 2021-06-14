@@ -3,7 +3,7 @@ import SkillType, { getSkillType } from "./enums/SkillType";
 class Skill {
   name: string = "";
   level: SkillType = SkillType.OTHER;
-  relevance: Relevance = Relevance.UNDEFINED;
+  relevance: Relevance = Relevance.TRIVIAL;
   constructor(json: any) {
     if (json) {
       this.name = json.name;

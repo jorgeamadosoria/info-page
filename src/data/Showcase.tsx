@@ -6,7 +6,7 @@ class Showcase {
   description: string = "";
   language: string = "";
   type: ShowCaseType = ShowCaseType.WEB;
-  relevance: Relevance = Relevance.UNDEFINED;
+  relevance: Relevance = Relevance.TRIVIAL;
   constructor(json: any) {
     if (json) {
       this.url = json.url;

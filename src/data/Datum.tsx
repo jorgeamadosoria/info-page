@@ -2,7 +2,7 @@ import Relevance, { getRelevance } from "./enums/Relevance";
 
 class Datum {
   value: string = "";
-  relevance: Relevance = Relevance.UNDEFINED;
+  relevance: Relevance = Relevance.TRIVIAL;
   constructor(json: any) {
     if (json) {
       this.value = json.value;
@@ -11,7 +11,8 @@ class Datum {
   }
 
   clear(relevance: Relevance): boolean {
-    return (this.value = this.relevance > relevance ? "" : this.value) !== "";
+    this.value = this.relevance > relevance ? "" : this.value;
+    return this.value !== null;
   }
 }
 

@@ -10,7 +10,7 @@ class Entry {
   reference: Datum = new Datum(null);
   description: Datum = new Datum(null);
   type: EntryType = EntryType.OTHER;
-  relevance: Relevance = Relevance.UNDEFINED;
+  relevance: Relevance = Relevance.TRIVIAL;
   constructor(json: any) {
     if (json) {
       this.fromDate = new Date(json.fromDate.replace(/-/g, "/"));
