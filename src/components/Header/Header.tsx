@@ -51,15 +51,17 @@ const Header = ({ format }: HeaderProps) => {
               </Link>
             </NavDropdown.Item>
           </NavDropdown>
-          <Nav.Link target="blank" href="#pdf">
-            <div className="nav-item">
-              <FontAwesomeIcon icon={faFilePdf} />
-              &nbsp;&nbsp;
-              <Link className="text-decoration-none text-dark" to={format}>
-                PDF
-              </Link>
-            </div>
-          </Nav.Link>
+          {format && (
+            <Nav.Link target="blank" href="#pdf">
+              <div className="nav-item">
+                <FontAwesomeIcon icon={faFilePdf} />
+                &nbsp;&nbsp;
+                <Link className="text-decoration-none text-dark" to={format}>
+                  PDF
+                </Link>
+              </div>
+            </Nav.Link>
+          )}
           <Nav.Link target="blank" href="#github">
             <FontAwesomeIcon icon={faGithub} />
             &nbsp;&nbsp;Repo

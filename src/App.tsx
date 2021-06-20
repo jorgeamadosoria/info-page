@@ -6,7 +6,12 @@ import ColorfulResume from "./components/resumes/ColorfulResume/ColorfulResume";
 import CompactResume from "./components/resumes/CompactResume/CompactResume";
 import LeftRailResume from "./components/resumes/LeftRailResume/LeftRailResume";
 //import Header from "./components/Header/Header";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 import { Container } from "react-bootstrap";
 import Header from "./components/Header/Header";
 import Relevance from "./data/enums/Relevance";
@@ -42,62 +47,75 @@ function App(props: any) {
   return (
     <Container fluid>
       <Router>
-        <Header format="colorful-pdf"></Header>
-        <div className="content">
-          <Switch>
-            <Route path="/flat">
+        <Switch>
+          <Route exact path="/">
+            <Redirect to="/flat" />
+          </Route>
+          <Route exact path="/flat">
+            <Header format="flat-pdf"></Header>
+            <div className="content">
               <FlatResume
                 resume={resumeState.resume}
                 relevance={Relevance.TRIVIAL}
               />
-            </Route>
-            <Route path="/colorful">
+            </div>
+          </Route>
+          <Route exact path="/colorful">
+            <Header format="colorful-pdf"></Header>
+            <div className="content">
               <ColorfulResume
                 resume={resumeState.resume}
                 relevance={Relevance.TRIVIAL}
               />
-            </Route>
-            <Route path="/leftrail">
+            </div>
+          </Route>
+          <Route exact path="/leftrail">
+            <Header format="leftrail-pdf"></Header>
+            <div className="content">
               <LeftRailResume
                 resume={resumeState.resume}
                 relevance={Relevance.STANDARD}
               />
-            </Route>
-            <Route path="/compact">
+            </div>
+          </Route>
+          <Route exact path="/compact">
+            <Header format="compact-pdf"></Header>
+            <div className="content">
               <CompactResume
                 resume={resumeState.resume}
                 relevance={Relevance.ESSENTIAL}
               />
-            </Route>
-            <Route path="/compact-pdf">
-              <CompactResumePDF
-                resume={resumeState.resume}
-                relevance={Relevance.ESSENTIAL}
-              />
-            </Route>
-            <Route path="/colorful-pdf">
-              <ColorfulResumePDF
-                resume={resumeState.resume}
-                relevance={Relevance.TRIVIAL}
-              />
-            </Route>
-            <Route path="/leftrail-pdf">
-              <LeftRailResumePDF
-                resume={resumeState.resume}
-                relevance={Relevance.STANDARD}
-              />
-            </Route>
-            <Route path="/flat-pdf">
-              <FlatResumePDF
-                resume={resumeState.resume}
-                relevance={Relevance.TRIVIAL}
-              />
-            </Route>
-            <Route path="/about">
-              <About resume={resumeState.resume} />
-            </Route>
-          </Switch>
-        </div>
+            </div>
+          </Route>
+          <Route exact path="/compact-pdf">
+            <CompactResumePDF
+              resume={resumeState.resume}
+              relevance={Relevance.ESSENTIAL}
+            />
+          </Route>
+          <Route exact path="/colorful-pdf">
+            <ColorfulResumePDF
+              resume={resumeState.resume}
+              relevance={Relevance.TRIVIAL}
+            />
+          </Route>
+          <Route exact path="/leftrail-pdf">
+            <LeftRailResumePDF
+              resume={resumeState.resume}
+              relevance={Relevance.STANDARD}
+            />
+          </Route>
+          <Route exact path="/flat-pdf">
+            <FlatResumePDF
+              resume={resumeState.resume}
+              relevance={Relevance.TRIVIAL}
+            />
+          </Route>
+          <Route exact path="/about">
+            <Header format=""></Header>
+            <About resume={resumeState.resume} />
+          </Route>
+        </Switch>
       </Router>
     </Container>
   );
