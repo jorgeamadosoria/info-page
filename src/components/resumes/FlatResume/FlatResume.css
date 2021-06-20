@@ -1,0 +1,27 @@
+.flat-timeline-icon {
+    border-radius:50%;
+    background-color: white;
+    position: relative;
+    float:left;
+    left: -35px;
+    width: 40px;
+    text-align: center;
+}
+
+
+.flat-left-border {
+    border-left: 0px solid black;
+    
+}
+
+@media (min-width: 1200px) {
+    .flat-left-border {
+        border-left: 1px solid black;
+    }
+}
+
+@media (min-width: 768px) {
+    .flat-left-border-md {
+        border-left: 1px solid black;
+    }
+}

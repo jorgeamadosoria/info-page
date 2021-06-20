@@ -1,0 +1,16 @@
+.compact-timeline-icon {
+    border-radius:50%;
+    background-color: white;
+    position: relative;
+    float:left;
+    left: -35px;
+    width: 40px;
+    text-align: center;
+}
+
+.compact-contact {
+    width: 90% !important;/* Need to specify a width (can be any unit). overflow: hidden does nothing unless the width of .title is less than the width of the containing content */
+    overflow: hidden; /* to hide anything that doesn't fit in the containing element. */
+    white-space: nowrap; /* to make sure the line doesn't break when it is longer than the containing div. */
+    text-overflow: ellipsis; 
+}
