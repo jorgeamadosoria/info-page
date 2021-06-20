@@ -31,49 +31,50 @@ const FlatResume = ({ resume, relevance }: ResumeProps) => {
         </Col>
       </Row>
       <Row className="pt-2">
-        <Col className="pl-3 pr-1" xs={5}>
+        <Col className="pl-3 pr-1" xs={12} xl={4}>
           {summary.value}
         </Col>
+        <Col xs={12} className="d-xl-none">
+          <hr />
+        </Col>
         <Col
-          className="border border-dark border-bottom-0 border-top-0 border-right-0"
-          xs={4}
+          className="flat-left-border mt-1 mb-1"
+          xs={12}
+          sm={12}
+          md={8}
+          xl={5}
         >
           <Row className="pl-2 ">
             {contacts.map((contact, index) => (
-              <Col
-                xs={contacts.length > 3 ? 6 : 12}
-                className="p-1 border-0"
-                key={index}
-              >
-                <p className="text-break">
-                  {contact.url && (
-                    <a className="text-dark" target="blank" href={contact.url}>
-                      {getIcon(contact.type)} &nbsp;
-                      <span className="text-break">{contact.name}</span>
-                    </a>
-                  )}
-                  {!contact.url && (
-                    <>
-                      {getIcon(contact.type)} &nbsp;
-                      <span className="text-break">{contact.name}</span>
-                    </>
-                  )}
-                </p>
+              <Col xs={12} sm={6} className="p-1 text-truncate " key={index}>
+                {contact.url && (
+                  <a className="text-dark" target="blank" href={contact.url}>
+                    {getIcon(contact.type)} &nbsp;
+                    <span className="text-break">{contact.name}</span>
+                  </a>
+                )}
+                {!contact.url && (
+                  <>
+                    {getIcon(contact.type)} &nbsp;
+                    <span className="text-break">{contact.name}</span>
+                  </>
+                )}
               </Col>
             ))}
           </Row>
         </Col>
-        <Col
-          className="pl-3 pr-1 border border-dark border-bottom-0 border-top-0 border-right-0"
-          xs={2}
-        >
+        <Col xs={12} className="d-md-none">
+          <hr />
+        </Col>
+        <Col className="pl-3 pr-1 flat-left-border-md" xs={12} md={4} xl={3}>
           <ListGroup variant="flush">
             {languages.map((language, index) => (
-              <ListGroup.Item className="p-0 border-bottom-0 " key={index}>
-                <p className="text-break">
-                  {language.code}&nbsp;&nbsp;
-                  <i>{language.level}</i>
-                </p>
+              <ListGroup.Item
+                className="p-0 text-truncate border-bottom-0 "
+                key={index}
+              >
+                {language.code}&nbsp;&nbsp;
+                <i>{language.level}</i>
               </ListGroup.Item>
             ))}
           </ListGroup>
@@ -84,7 +85,14 @@ const FlatResume = ({ resume, relevance }: ResumeProps) => {
           <hr />
         </Col>
         {skills.map((skill, index) => (
-          <Col xs={12} sm={6} md={4} lg={2} key={index}>
+          <Col
+            className="text-truncate"
+            xs={12}
+            sm={6}
+            md={4}
+            lg={2}
+            key={index}
+          >
             <b>{skill.name}</b>
             &nbsp;<i>({skill.level})</i>
           </Col>

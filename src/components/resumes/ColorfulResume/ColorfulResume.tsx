@@ -32,16 +32,19 @@ const ColorfulResume = ({ resume, relevance }: ResumeProps) => {
         </Col>
       </Row>
       <Row className="pt-2">
-        <Col className="pl-3 pr-1" xs={5}>
-          {summary.value}
+        <Col className="pl-3 pr-1" xs={12} sm={12} md={12} xl={4}>
+          <p>{summary.value}</p>
         </Col>
-        <Col
-          className="border border-dark border-bottom-0 border-top-0 border-right-0"
-          xs={4}
-        >
-          <Row className="pl-2">
+        <Col className="pl-xl-3 pr-xl-0" xs={12} lg={8} xl={5}>
+          <Row className="pl-2 pl-xl-0">
             {contacts.map((contact, index) => (
-              <Col xs={6} className="p-1 border-0" key={index}>
+              <Col
+                xs={6}
+                md={4}
+                lg={6}
+                className="p-1 p-xl-0 pt-xl-1 pb-xl-1 border-0"
+                key={index}
+              >
                 <p className="text-break">
                   {contact.url && (
                     <a className="text-dark" target="blank" href={contact.url}>
@@ -60,28 +63,30 @@ const ColorfulResume = ({ resume, relevance }: ResumeProps) => {
             ))}
           </Row>
         </Col>
-        <Col
-          className="pl-3 pr-1 border border-dark border-bottom-0 border-top-0 border-right-0"
-          xs={2}
-        >
-          <ListGroup variant="flush">
+        <Col xs={12} lg={3}>
+          <Row>
             {languages.map((language, index) => (
-              <ListGroup.Item className="p-0 border-bottom-0 " key={index}>
-                <h5>
+              <Col
+                xs={6}
+                sm={6}
+                md={4}
+                lg={12}
+                className="pb-lg-1 pt-lg-1 border-0"
+                key={index}
+              >
+                <p className="text-break">
                   <Badge
                     pill
                     variant="secondary"
-                    className={
-                      "colorful-" + language.shortLevel + " text-break"
-                    }
+                    className={"w-100 colorful-" + language.shortLevel}
                   >
                     {language.code}&nbsp;&nbsp;
                     <i>{language.level}</i>
                   </Badge>
-                </h5>
-              </ListGroup.Item>
+                </p>
+              </Col>
             ))}
-          </ListGroup>
+          </Row>
         </Col>
       </Row>
       <Row>
@@ -89,8 +94,8 @@ const ColorfulResume = ({ resume, relevance }: ResumeProps) => {
           <hr />
         </Col>
         {skills.map((skill, index) => (
-          <Col xs={12} sm={6} md={4} lg={2} key={index}>
-            <Badge pill className={"colorful-skill-" + skill.level}>
+          <Col xs={6} sm={6} md={4} lg={3} xl={2} key={index}>
+            <Badge pill className={"w-100 colorful-skill-" + skill.level}>
               <b>
                 {skill.name}
                 &nbsp;<i>({skill.level})</i>
@@ -122,7 +127,7 @@ const ColorfulResume = ({ resume, relevance }: ResumeProps) => {
                 className={
                   "colorful-" +
                   entry.type +
-                  " mx-auto colorful-timeline-icon border p-1 pt-2 pb-2 border-dark"
+                  " mx-auto colorful-timeline-icon border p-2 ml-3 pt-2 pb-2 border-dark d-inline-flex"
                 }
               >
                 {getIcon(entry.type, IconColor.COLOR)}
@@ -131,7 +136,7 @@ const ColorfulResume = ({ resume, relevance }: ResumeProps) => {
                 className={
                   "colorful-" +
                   entry.type +
-                  " h5 colorful-entry-header border border-left-0 border-dark d-inline-flex pl-3 pr-3"
+                  " h5 colorful-entry-header border border-left-0 border-dark pl-3 d-inline-flex"
                 }
               >
                 &nbsp;&nbsp;&nbsp;&nbsp;
@@ -139,10 +144,12 @@ const ColorfulResume = ({ resume, relevance }: ResumeProps) => {
                 {entry.toDate &&
                   " to ".concat(entry.toDate.toLocaleDateString())}
                 &nbsp;&nbsp;
+              </p>
+              <p className="h6 pl-4 ml-3">
                 {entry.name}&nbsp;@&nbsp;
                 {refText ? (
                   <a
-                    className="text-dark"
+                    className="text-reset"
                     target="blank"
                     href={entry.reference.value}
                   >
@@ -154,9 +161,6 @@ const ColorfulResume = ({ resume, relevance }: ResumeProps) => {
                     &nbsp;&nbsp;
                   </>
                 )}
-              </p>
-              <p className="pl-4 ml-3">{entry.description.value}</p>
-              <p className="pl-4 ml-3">
                 {!refText && (
                   <>
                     <a
@@ -169,6 +173,7 @@ const ColorfulResume = ({ resume, relevance }: ResumeProps) => {
                   </>
                 )}
               </p>
+              <p className="pl-4 ml-3">{entry.description.value}</p>
             </Col>
             <Col
               className=" pb-0 pt-3 pb-3 border border-dark border-bottom-0 border-top-0 border-right-0"
@@ -185,7 +190,7 @@ const ColorfulResume = ({ resume, relevance }: ResumeProps) => {
           <Row>
             {showcase.map((show, index) => (
               <Col
-                sm={12}
+                sm={6}
                 md={6}
                 lg={4}
                 xl={3}

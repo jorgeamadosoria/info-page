@@ -38,33 +38,32 @@ const LeftRailResume = ({ resume, relevance }: ResumeProps) => {
           <Card.Subtitle className="ml-4 mb-2">
             <i>{joinedPositions}</i>
           </Card.Subtitle>
-          <div className="h3 pl-4 bg-dark ">Personal Info</div>
+          <div className="h3 pl-4 bg-dark text-truncate ">Personal Info</div>
           <ListGroup variant="flush">
             {contacts.map((contact, index) => (
               <ListGroup.Item
                 className="ml-2 bg-secondary text-light border-0"
                 key={index}
               >
-                {contact.url && (
-                  <a className="text-light" target="blank" href={contact.url}>
+                <p className="m-0 text-truncate">
+                  <a
+                    title={contact.name}
+                    className="text-light"
+                    target="blank"
+                    href={contact.url ? contact.url : "#"}
+                  >
                     {getIcon(contact.type, IconColor.WHITE)} &nbsp;&nbsp;&nbsp;
                     <span className="text-break">{contact.name}</span>
                   </a>
-                )}
-                {!contact.url && (
-                  <>
-                    {getIcon(contact.type, IconColor.WHITE)} &nbsp;&nbsp;&nbsp;
-                    <span className="text-break">{contact.name}</span>
-                  </>
-                )}
+                </p>
               </ListGroup.Item>
             ))}
           </ListGroup>
-          <div className="h3 pl-4 bg-dark ">Languages</div>
+          <div className="h3 pl-4 bg-dark text-truncate ">Languages</div>
           <ListGroup variant="flush">
             {languages.map((language, index) => (
               <ListGroup.Item
-                className="ml-2 bg-secondary text-light border-0"
+                className="ml-2 bg-secondary text-truncate text-light border-0"
                 key={index}
               >
                 <b>{language.code}</b>&nbsp;&nbsp;
@@ -76,11 +75,11 @@ const LeftRailResume = ({ resume, relevance }: ResumeProps) => {
               </ListGroup.Item>
             ))}
           </ListGroup>
-          <div className="h3 pl-4 bg-dark ">Skills</div>
+          <div className="h3 pl-4 bg-dark text-truncate ">Skills</div>
           <ListGroup variant="flush">
             {skills.map((skill, index) => (
               <ListGroup.Item
-                className="ml-2 bg-secondary text-light border-0 "
+                className="ml-2 text-truncate bg-secondary text-light border-0 "
                 key={index}
               >
                 <b>{skill.name}</b>
@@ -88,7 +87,7 @@ const LeftRailResume = ({ resume, relevance }: ResumeProps) => {
               </ListGroup.Item>
             ))}
           </ListGroup>
-          <div className="h3 pl-4 bg-dark ">Portfolio</div>
+          <div className="h3 pl-4 bg-dark text-truncate ">Portfolio</div>
           <ListGroup variant="flush">
             {showcase.map((show, index) => (
               <ListGroup.Item
@@ -107,7 +106,7 @@ const LeftRailResume = ({ resume, relevance }: ResumeProps) => {
         <Col xs={8} className="pt-2 leftrail-rounded-right bg-light">
           {summary.value}
           <hr />
-          <div className="h3">Professional Timeline</div>
+          <div className="h3 text-truncate ">Professional Timeline</div>
           <hr />
           {entries.map((entry, index) => {
             const refText =

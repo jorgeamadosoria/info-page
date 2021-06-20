@@ -42,7 +42,7 @@ export const About = ({ resume }: AboutProps) => {
       <Tabs defaultActiveKey="info" className="mb-3">
         <Tab eventKey="info" tabClassName="text-dark" title="Info">
           <Row>
-            <Col xs={12}>
+            <Col xs={12} lg={7} xl={8}>
               <p>
                 A small React app to showcase my CV. It allows the selection of
                 different visual styles for HTML and PDF (detailed below). The
@@ -59,43 +59,39 @@ export const About = ({ resume }: AboutProps) => {
                 &nbsp; is also included.
               </p>
             </Col>
-          </Row>
-          <Row className="mt-2">
-            <Col xs={12}>
+            <Col xs={12} lg={5} xl={4}>
               <h5>Technologies</h5>
-            </Col>
-          </Row>
-          <Row className="mt-4">
-            <Col lg={6} className="d-flex">
-              <img
-                className="mx-auto about-logo-tech"
-                alt="React"
-                src="https://plone.org/events/sprints/plone-react-sprint-bonn-2018/@@download/image/1200px-React-icon.svg.png"
-              />
-              &nbsp;&nbsp;
-              <img
-                className="mx-auto about-logo-tech"
-                alt="React-Pdf"
-                src="https://react-pdf.org/images/logo.png"
-              />
-              &nbsp;&nbsp;
-              <img
-                className="mx-auto about-logo-tech"
-                alt="React-Bootstrap"
-                src="https://crowdcast-prod.imgix.net/-KHhIzuATU2K4OVPd2sP/event-cover-5388?w=800"
-              />
-              &nbsp;&nbsp;
-              <img
-                className="mx-auto about-logo-tech"
-                alt="Bootstrap"
-                src="https://download.logo.wine/logo/Bootstrap_(front-end_framework)/Bootstrap_(front-end_framework)-Logo.wine.png"
-              />
-              &nbsp;&nbsp;
-              <img
-                className="mx-auto about-logo-tech"
-                alt="Font Awesome"
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtO17GkRov_uk0Y6ePJ1mOEI1Qqt6eZr2wUWXdO8QoPrpiM6f5DpOFh9pcGQw8k2AohjU&usqp=CAU"
-              />
+              <div className="d-flex flex-wrap">
+                <img
+                  className="about-logo-tech"
+                  alt="React"
+                  src="https://plone.org/events/sprints/plone-react-sprint-bonn-2018/@@download/image/1200px-React-icon.svg.png"
+                />
+                &nbsp;&nbsp;
+                <img
+                  className="about-logo-tech"
+                  alt="React-Pdf"
+                  src="https://react-pdf.org/images/logo.png"
+                />
+                &nbsp;&nbsp;
+                <img
+                  className="about-logo-tech"
+                  alt="React-Bootstrap"
+                  src="https://crowdcast-prod.imgix.net/-KHhIzuATU2K4OVPd2sP/event-cover-5388?w=800"
+                />
+                &nbsp;&nbsp;
+                <img
+                  className="about-logo-tech"
+                  alt="Bootstrap"
+                  src="https://download.logo.wine/logo/Bootstrap_(front-end_framework)/Bootstrap_(front-end_framework)-Logo.wine.png"
+                />
+                &nbsp;&nbsp;
+                <img
+                  className="about-logo-tech"
+                  alt="Font Awesome"
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtO17GkRov_uk0Y6ePJ1mOEI1Qqt6eZr2wUWXdO8QoPrpiM6f5DpOFh9pcGQw8k2AohjU&usqp=CAU"
+                />
+              </div>
             </Col>
           </Row>
         </Tab>

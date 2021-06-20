@@ -4,6 +4,7 @@ import { Container, Row, Col, Card } from "react-bootstrap";
 import EntryType from "../../../data/enums/EntryType";
 import { getIcon, ResumeProps } from "../ResumeUtils";
 import Entry from "../../../data/Entry";
+import Contact from "../../../data/Contact";
 
 const CompactResume = ({ resume, relevance }: ResumeProps) => {
   const {
@@ -48,24 +49,7 @@ const CompactResume = ({ resume, relevance }: ResumeProps) => {
             <Row className="pl-3 pr-1 ">
               {contacts.map((contact, index) => (
                 <Col xs={12} className="p-1 border-0" key={index}>
-                  <p className="m-0 text-break">
-                    {contact.url && (
-                      <a
-                        className="text-dark"
-                        target="blank"
-                        href={contact.url}
-                      >
-                        {getIcon(contact.type)} &nbsp;&nbsp;&nbsp;
-                        <span className="text-break">{contact.name}</span>
-                      </a>
-                    )}
-                    {!contact.url && (
-                      <>
-                        {getIcon(contact.type)} &nbsp;&nbsp;&nbsp;
-                        <span className="text-break">{contact.name}</span>
-                      </>
-                    )}
-                  </p>
+                  <ContactEntry contact={contact} />
                 </Col>
               ))}
             </Row>
@@ -107,11 +91,11 @@ const CompactResume = ({ resume, relevance }: ResumeProps) => {
           <Col xs={12} className="ml-1 pl-3">
             {showcase.map((show, index) => (
               <div
-                className="pl-1 pr-1 border-top-0 border-bottom-0 d-inline-flex"
+                className="pr-1 border-top-0 border-bottom-0 d-inline-flex"
                 key={index}
               >
                 {getIcon(show.type)}
-                <a target="blank" className="text-dark" href={show.url}>
+                <a target="blank" className="ml-1 text-dark" href={show.url}>
                   {show.name}
                 </a>
               </div>
@@ -164,6 +148,28 @@ const CompactResume = ({ resume, relevance }: ResumeProps) => {
         </Col>
       </Row>
     </Container>
+  );
+};
+
+type ContactProps = {
+  contact: Contact;
+};
+
+const ContactEntry = ({ contact }: ContactProps) => {
+  return (
+    contact && (
+      <p className="m-0 text-truncate">
+        <a
+          title={contact.name}
+          className="text-dark"
+          target="blank"
+          href={contact.url ? contact.url : "#"}
+        >
+          {getIcon(contact.type)}&nbsp;
+          <span className="text-break">{contact.name}</span>
+        </a>
+      </p>
+    )
   );
 };
 
