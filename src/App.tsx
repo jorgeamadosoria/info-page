@@ -25,7 +25,7 @@ import { About } from "./components/About/About";
 function App(props: any) {
   const [resumeState, setResumeState] = useState({ resume: new Resume() });
   useEffect(() => {
-    fetch("/data.json")
+    fetch("./data.json")
       .then(function (response) {
         if (!response.ok) {
           throw Error(response.statusText);

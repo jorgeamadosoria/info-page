@@ -1,4 +1,5 @@
 {
+  "homepage": "http://jorgeamadosoria.github.io/info-page",
   "name": "info-page",
   "version": "0.1.0",
   "private": true,
@@ -31,6 +32,8 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "stop": "npm stop",
     "build": "react-scripts build",
@@ -67,6 +70,7 @@
   },
   "devDependencies": {
     "@types/react-json-pretty": "^2.2.0",
-    "@types/react-router-dom": "^5.1.7"
+    "@types/react-router-dom": "^5.1.7",
+    "gh-pages": "^3.2.2"
   }
 }
