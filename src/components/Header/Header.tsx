@@ -52,21 +52,29 @@ const Header = ({ format }: HeaderProps) => {
             </NavDropdown.Item>
           </NavDropdown>
           {format && (
-            <Nav.Link target="blank" href="#pdf">
-              <div className="nav-item">
-                <FontAwesomeIcon icon={faFilePdf} />
-                &nbsp;&nbsp;
-                <Link className="text-decoration-none text-dark" to={format}>
-                  PDF
-                </Link>
-              </div>
-            </Nav.Link>
+            <Nav.Item className="mt-2 text-secondary">
+              <FontAwesomeIcon icon={faFilePdf} />
+              &nbsp;&nbsp;
+              <Link
+                target="_blank"
+                className="text-decoration-none text-dark"
+                to={format}
+              >
+                PDF
+              </Link>
+            </Nav.Item>
           )}
-          <Nav.Link target="blank" href="#github">
+          <Nav.Link
+            target="_blank"
+            href="https://github.com/jorgeamadosoria/info-page"
+          >
             <FontAwesomeIcon icon={faGithub} />
             &nbsp;&nbsp;Repo
           </Nav.Link>
-          <Nav.Link target="blank" href="https://portfolio-jasr.herokuapp.com/">
+          <Nav.Link
+            target="_blank"
+            href="https://portfolio-jasr.herokuapp.com/"
+          >
             <FontAwesomeIcon icon={faBriefcase} />
             &nbsp;&nbsp;Portfolio
           </Nav.Link>
