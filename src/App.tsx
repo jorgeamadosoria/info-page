@@ -46,10 +46,10 @@ function App(props: any) {
 
   return (
     <Container fluid>
-      <Router>
+      <Router basename={process.env.PUBLIC_URL}>
         <Switch>
-          <Route exact path="./">
-            <Redirect to="./flat" />
+          <Route exact path="/">
+            <Redirect to="/flat" />
           </Route>
           <Route exact path="/flat">
             <Header format="flat-pdf"></Header>
