@@ -25,7 +25,7 @@ import { About } from "./components/About/About";
 function App(props: any) {
   const [resumeState, setResumeState] = useState({ resume: new Resume() });
   useEffect(() => {
-    fetch("/info-page/data.json")
+    fetch("/data.json")
       .then(function (response) {
         if (!response.ok) {
           throw Error(response.statusText);
@@ -52,7 +52,7 @@ function App(props: any) {
             <Redirect to="/flat" />
           </Route>
           <Route exact path="/flat">
-            <Header format="flat-pdf"></Header>
+            <Header format="/flat-pdf"></Header>
             <div className="content">
               <FlatResume
                 resume={resumeState.resume}
@@ -61,7 +61,7 @@ function App(props: any) {
             </div>
           </Route>
           <Route exact path="/colorful">
-            <Header format="colorful-pdf"></Header>
+            <Header format="/colorful-pdf"></Header>
             <div className="content">
               <ColorfulResume
                 resume={resumeState.resume}
@@ -70,7 +70,7 @@ function App(props: any) {
             </div>
           </Route>
           <Route exact path="/leftrail">
-            <Header format="leftrail-pdf"></Header>
+            <Header format="/leftrail-pdf"></Header>
             <div className="content">
               <LeftRailResume
                 resume={resumeState.resume}
@@ -79,7 +79,7 @@ function App(props: any) {
             </div>
           </Route>
           <Route exact path="/compact">
-            <Header format="compact-pdf"></Header>
+            <Header format="/compact-pdf"></Header>
             <div className="content">
               <CompactResume
                 resume={resumeState.resume}
