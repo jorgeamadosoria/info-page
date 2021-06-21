@@ -25,7 +25,7 @@ import { About } from "./components/About/About";
 function App(props: any) {
   const [resumeState, setResumeState] = useState({ resume: new Resume() });
   useEffect(() => {
-    fetch("/data.json")
+    fetch(process.env.PUBLIC_URL + "/data.json")
       .then(function (response) {
         if (!response.ok) {
           throw Error(response.statusText);
@@ -46,7 +46,7 @@ function App(props: any) {
 
   return (
     <Container fluid>
-      <Router basename={process.env.PUBLIC_URL}>
+      <Router>
         <Switch>
           <Route path="/">
             <Redirect to="/flat" />
