@@ -48,10 +48,10 @@ function App(props: any) {
     <Container fluid>
       <Router>
         <Switch>
-          <Route path="/">
-            <Redirect to="/flat" />
+          <Route path="">
+            <Redirect to="flat" />
           </Route>
-          <Route exact path="/flat">
+          <Route exact path="flat">
             <Header format="flat-pdf"></Header>
 
             <div className="content">
