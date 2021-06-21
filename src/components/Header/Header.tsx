@@ -57,7 +57,7 @@ const Header = ({ format }: HeaderProps) => {
           )}
           <Nav.Link
             target="_blank"
-            href="https://github.com/jorgeamadosoria/info-page"
+            href="https://github.com/jorgeamadosoria/jorgeamadosoria.github.io"
           >
             <FontAwesomeIcon icon={faGithub} />
             &nbsp;&nbsp;Repo
