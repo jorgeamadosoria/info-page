@@ -52,7 +52,7 @@ function App(props: any) {
             <Redirect to="/flat" />
           </Route>
           <Route exact path="/flat">
-            <Header format="flat-pdf"></Header>
+            <Header format="/flat-pdf"></Header>
             <div className="content">
               <FlatResume
                 resume={resumeState.resume}
