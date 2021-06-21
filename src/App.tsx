@@ -53,6 +53,7 @@ function App(props: any) {
           </Route>
           <Route exact path="/flat">
             <Header format="/flat-pdf"></Header>
+            {process.env.PUBLIC_URL}
             <div className="content">
               <FlatResume
                 resume={resumeState.resume}
