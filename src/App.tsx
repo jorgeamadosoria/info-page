@@ -51,7 +51,7 @@ function App(props: any) {
           <Route path="/">
             <Redirect to="/flat" />
           </Route>
-          <Route exact path="/flat">
+          <Route exact path={process.env.PUBLIC_URL + "/flat"}>
             <Header format="flat-pdf"></Header>
 
             <div className="content">
