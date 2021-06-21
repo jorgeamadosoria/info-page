@@ -25,7 +25,7 @@ import { About } from "./components/About/About";
 function App(props: any) {
   const [resumeState, setResumeState] = useState({ resume: new Resume() });
   useEffect(() => {
-    fetch(process.env.PUBLIC_URL + "/data.json")
+    fetch("/data.json")
       .then(function (response) {
         if (!response.ok) {
           throw Error(response.statusText);
@@ -51,7 +51,7 @@ function App(props: any) {
           <Route path="/">
             <Redirect to="/flat" />
           </Route>
-          <Route exact path={process.env.PUBLIC_URL + "/flat"}>
+          <Route exact path="/flat">
             <Header format="flat-pdf"></Header>
 
             <div className="content">
