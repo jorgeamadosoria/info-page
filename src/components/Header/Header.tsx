@@ -9,6 +9,7 @@ import {
   faInfoCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import { STYLES } from "../../data/Styles";
 
 export type HeaderProps = {
   format: string;
@@ -30,26 +31,16 @@ const Header = ({ format }: HeaderProps) => {
             }
             id="navbarScrollingDropdown"
           >
-            <NavDropdown.Item href="flat">
-              <Link className="text-decoration-none text-dark" to="/flat">
-                Flat
-              </Link>
-            </NavDropdown.Item>
-            <NavDropdown.Item href="colorful">
-              <Link className="text-decoration-none text-dark" to="/colorful">
-                Colorful
-              </Link>
-            </NavDropdown.Item>
-            <NavDropdown.Item href="leftrail">
-              <Link className="text-decoration-none text-dark" to="/leftrail">
-                Left Rail
-              </Link>
-            </NavDropdown.Item>
-            <NavDropdown.Item href="compact">
-              <Link className="text-decoration-none text-dark" to="/compact">
-                Compact
-              </Link>
-            </NavDropdown.Item>
+            {STYLES.map((style) => (
+              <NavDropdown.Item href={style.name.toLowerCase()}>
+                <Link
+                  className="text-decoration-none text-dark"
+                  to={style.htmlUrl}
+                >
+                  {style.name}
+                </Link>
+              </NavDropdown.Item>
+            ))}
           </NavDropdown>
           {format && (
             <Nav.Item className="mt-2 text-secondary">

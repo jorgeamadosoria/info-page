@@ -3,6 +3,7 @@ import "./About.css";
 import "react-json-pretty/themes/monikai.css";
 import JSONPretty from "react-json-pretty";
 import { Container, Row, Col, Card, Table, Tabs, Tab } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import SkillType from "../../data/enums/SkillType";
 import EntryType from "../../data/enums/EntryType";
 import Relevance from "../../data/enums/Relevance";
@@ -10,6 +11,7 @@ import ShowCaseType from "../../data/enums/ShowCaseType";
 import SocialType from "../../data/enums/SocialType";
 import LanguageLevel from "../../data/enums/LanguageLevel";
 
+import { STYLES } from "../../data/Styles";
 type AboutProps = {
   resume: any;
 };
@@ -17,7 +19,7 @@ type AboutProps = {
 export const About = ({ resume }: AboutProps) => {
   const [templateState, setTemplateState] = useState({ template: null });
   useEffect(() => {
-    fetch("/template.json")
+    fetch(process.env.PUBLIC_URL + "/template.json")
       .then(function (response) {
         if (!response.ok) {
           throw Error(response.statusText);
@@ -35,6 +37,38 @@ export const About = ({ resume }: AboutProps) => {
         return null;
       });
   }, []);
+
+  const techs = [
+    {
+      name: "React",
+      url: "https://plone.org/events/sprints/plone-react-sprint-bonn-2018/@@download/image/1200px-React-icon.svg.png",
+    },
+    {
+      name: "React-Pdf",
+      url: "https://react-pdf.org/images/logo.png",
+    },
+    {
+      name: "React-Bootstrap",
+      url: "https://crowdcast-prod.imgix.net/-KHhIzuATU2K4OVPd2sP/event-cover-5388?w=800",
+    },
+    {
+      name: "Bootstrap",
+      url: "https://download.logo.wine/logo/Bootstrap_(front-end_framework)/Bootstrap_(front-end_framework)-Logo.wine.png",
+    },
+    {
+      name: "Font Awesome",
+      url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtO17GkRov_uk0Y6ePJ1mOEI1Qqt6eZr2wUWXdO8QoPrpiM6f5DpOFh9pcGQw8k2AohjU&usqp=CAU",
+    },
+  ];
+
+  const enums = [
+    { name: "Skill", value: Object.values(SkillType).join(", ") },
+    { name: "Entry", value: Object.values(EntryType).join(", ") },
+    { name: "Relevance", value: Object.values(Relevance).join(", ") },
+    { name: "Showcase", value: Object.values(ShowCaseType).join(", ") },
+    { name: "Social", value: Object.values(SocialType).join(", ") },
+    { name: "Language", value: Object.values(LanguageLevel).join(", ") },
+  ];
 
   return (
     <Container fluid>
@@ -62,35 +96,16 @@ export const About = ({ resume }: AboutProps) => {
             <Col xs={12} lg={5} xl={4}>
               <h5>Technologies</h5>
               <div className="d-flex flex-wrap">
-                <img
-                  className="about-logo-tech"
-                  alt="React"
-                  src="https://plone.org/events/sprints/plone-react-sprint-bonn-2018/@@download/image/1200px-React-icon.svg.png"
-                />
-                &nbsp;&nbsp;
-                <img
-                  className="about-logo-tech"
-                  alt="React-Pdf"
-                  src="https://react-pdf.org/images/logo.png"
-                />
-                &nbsp;&nbsp;
-                <img
-                  className="about-logo-tech"
-                  alt="React-Bootstrap"
-                  src="https://crowdcast-prod.imgix.net/-KHhIzuATU2K4OVPd2sP/event-cover-5388?w=800"
-                />
-                &nbsp;&nbsp;
-                <img
-                  className="about-logo-tech"
-                  alt="Bootstrap"
-                  src="https://download.logo.wine/logo/Bootstrap_(front-end_framework)/Bootstrap_(front-end_framework)-Logo.wine.png"
-                />
-                &nbsp;&nbsp;
-                <img
-                  className="about-logo-tech"
-                  alt="Font Awesome"
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtO17GkRov_uk0Y6ePJ1mOEI1Qqt6eZr2wUWXdO8QoPrpiM6f5DpOFh9pcGQw8k2AohjU&usqp=CAU"
-                />
+                {techs.map((tech, index) => (
+                  <>
+                    <img
+                      className="about-logo-tech"
+                      alt={tech.name}
+                      src={tech.url}
+                    />
+                    &nbsp;&nbsp;
+                  </>
+                ))}
               </div>
             </Col>
           </Row>
@@ -107,91 +122,25 @@ export const About = ({ resume }: AboutProps) => {
             </Col>
           </Row>
           <Row>
-            <Col sm={12} md={6} lg={4} xl={3} className="p-1 border-0 flex-1">
-              <Card className="mx-auto h-100">
-                <Card.Body className="p-0">
-                  <Card.Header>Flat</Card.Header>
-                  <Card.Text className="p-3">
-                    Standard black and white CV with full information. Your
-                    standard go to CV to show to prospective employers.
-                  </Card.Text>
-                </Card.Body>
-                <Card.Footer className="text-right">
-                  <a target="blank" className="text-dark" href="flat">
-                    HTML
-                  </a>
-                  &nbsp;&nbsp;
-                  <a target="blank" className="text-dark" href="flat-pdf">
-                    PDF
-                  </a>
-                </Card.Footer>
-              </Card>
-            </Col>
-            <Col sm={12} md={6} lg={4} xl={3} className="p-1 border-0 flex-1">
-              <Card className="mx-auto h-100">
-                <Card.Body className="p-0">
-                  <Card.Header>Colorful</Card.Header>
-                  <Card.Text className="p-3">
-                    A flight of fancy, this format is a copy of the Flat format
-                    but with added colors and some other decorations. It's there
-                    to give a different view on how a CV can look like, but I
-                    wouldn't recommend it for serious use.
-                  </Card.Text>
-                </Card.Body>
-                <Card.Footer className="text-right">
-                  <a target="blank" className="text-dark" href="colorful">
-                    HTML
-                  </a>
-                  &nbsp;&nbsp;
-                  <a target="blank" className="text-dark" href="colorful-pdf">
-                    PDF
-                  </a>
-                </Card.Footer>
-              </Card>
-            </Col>
-            <Col sm={12} md={6} lg={4} xl={3} className="p-1 border-0 flex-1">
-              <Card className="mx-auto h-100">
-                <Card.Body className="p-0">
-                  <Card.Header>Left Rail</Card.Header>
-                  <Card.Text className="p-2">
-                    Left rail, shades of grey. A more elegant presentation with
-                    relevant information, but not all of it. A good choice to
-                    show your work.
-                  </Card.Text>
-                </Card.Body>
-                <Card.Footer className="text-right">
-                  <a target="blank" className="text-dark" href="leftrail">
-                    HTML
-                  </a>
-                  &nbsp;&nbsp;
-                  <a target="blank" className="text-dark" href="leftrail-pdf">
-                    PDF
-                  </a>
-                </Card.Footer>
-              </Card>
-            </Col>
-            <Col sm={12} md={6} lg={4} xl={3} className="p-1 border-0 flex-1">
-              <Card className="mx-auto h-100">
-                <Card.Body className="p-0">
-                  <Card.Header>Compact</Card.Header>
-                  <Card.Text className="p-2">
-                    The most succinct of the formats, this is a way to show just
-                    the most essential information in the smallest space
-                    possible. For the people that likes one page summaries and
-                    elevator pitches.
-                  </Card.Text>
-                </Card.Body>
-                <Card.Footer className="text-right">
-                  <a target="blank" className="text-dark" href="compact">
-                    HTML
-                  </a>
-                  &nbsp;&nbsp;
-                  <a target="blank" className="text-dark" href="compact-pdf">
-                    PDF
-                  </a>
-                </Card.Footer>
-              </Card>
-            </Col>
+            {STYLES.map((style) => (
+              <Col sm={12} md={6} lg={4} xl={3} className="p-1 border-0 flex-1">
+                <Card className="mx-auto h-100">
+                  <Card.Body className="p-0">
+                    <Card.Header>{style.name}</Card.Header>
+                    <Card.Text className="p-3">{style.description}</Card.Text>
+                  </Card.Body>
+                  <Card.Footer className="text-right">
+                    <Link className="text-dark" to={style.htmlUrl}>
+                      HTML
+                    </Link>
+                    &nbsp;&nbsp;
+                    <Link className="text-dark" to={style.pdfUrl}>
+                      PDF
+                    </Link>
+                  </Card.Footer>
+                </Card>
+              </Col>
+            ))}
           </Row>
         </Tab>
         <Tab eventKey="contact" tabClassName="text-dark" title="Enums">
@@ -210,30 +159,12 @@ export const About = ({ resume }: AboutProps) => {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>Skill</td>
-                    <td>{Object.values(SkillType).join(", ")}</td>
-                  </tr>
-                  <tr>
-                    <td>Entry</td>
-                    <td>{Object.values(EntryType).join(", ")}</td>
-                  </tr>
-                  <tr>
-                    <td>Relevance</td>
-                    <td>{Object.values(Relevance).join(", ")}</td>
-                  </tr>
-                  <tr>
-                    <td>Showcase</td>
-                    <td>{Object.values(ShowCaseType).join(", ")}</td>
-                  </tr>
-                  <tr>
-                    <td>Social</td>
-                    <td>{Object.values(SocialType).join(", ")}</td>
-                  </tr>
-                  <tr>
-                    <td>Language</td>
-                    <td>{Object.values(LanguageLevel).join(", ")}</td>
-                  </tr>
+                  {enums.map((e) => (
+                    <tr>
+                      <td>{e.name}</td>
+                      <td>{e.value}</td>
+                    </tr>
+                  ))}
                 </tbody>
               </Table>
             </Col>

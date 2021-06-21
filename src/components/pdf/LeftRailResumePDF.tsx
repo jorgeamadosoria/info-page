@@ -4,7 +4,6 @@ import {
   Page,
   Text,
   View,
-  StyleSheet,
   Link,
   PDFViewer,
 } from "@react-pdf/renderer";
@@ -13,13 +12,13 @@ import EntryType from "../../data/enums/EntryType";
 import IconColor from "../../data/enums/IconColor";
 import {
   getIcon,
-  flatStyles,
   mb,
   ml,
   mt,
   mr,
   fontSize,
   join,
+  flexRow,
   pl,
   pr,
   pt,
@@ -36,12 +35,13 @@ import {
   bg,
   b,
   color,
+  flexGrow,
   left,
+  alignFlexStart,
+  justifySpaceBetween,
 } from "./PDFUtils";
 import { isSocialType } from "../../data/enums/SocialType";
 import ShowCaseType from "../../data/enums/ShowCaseType";
-// Create styles
-const styles = StyleSheet.create(flatStyles());
 
 const LeftRailResumePDF = ({ resume, relevance }: ResumeProps) => {
   const {
@@ -59,9 +59,9 @@ const LeftRailResumePDF = ({ resume, relevance }: ResumeProps) => {
     .join(", ");
 
   return (
-    <PDFViewer width="100%" height="1000" style={styles.pos}>
+    <PDFViewer width="100%" height="1000">
       <Document>
-        <Page size="A4" style={join(styles.flexRow)}>
+        <Page size="A4" style={flexRow()}>
           <View
             style={join(pt(35), mr(15), h(841), bg("#6c757d"), color("white"))}
           >
@@ -149,14 +149,7 @@ const LeftRailResumePDF = ({ resume, relevance }: ResumeProps) => {
             >
               <Text style={(mt(10), pl(5))}>Skills</Text>
             </View>
-            <View
-              style={join(
-                pl(8),
-                styles.sectionSkillContainer,
-                styles.alignFlexStart,
-                styles.justifySpaceBetween
-              )}
-            >
+            <View style={join(pl(8), alignFlexStart(), justifySpaceBetween())}>
               {skills.map((skill, index) => (
                 <View style={join(fontSize(15), mt(4), mb(4))} key={index}>
                   <Text>
@@ -208,9 +201,7 @@ const LeftRailResumePDF = ({ resume, relevance }: ResumeProps) => {
           </View>
 
           {/* Right rail */}
-          <View
-            style={join(pt(35), pr(5), mr(15), h(841), styles.flexGrow, ml(10))}
-          >
+          <View style={join(pt(35), pr(5), mr(15), h(841), flexGrow(), ml(10))}>
             <View style={join(mt(5), mb(10))}>
               <Text style={fontSize(12)}>{summary.value}</Text>
             </View>

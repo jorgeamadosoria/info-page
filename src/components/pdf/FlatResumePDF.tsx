@@ -4,7 +4,6 @@ import {
   Page,
   Text,
   View,
-  StyleSheet,
   Link,
   PDFViewer,
 } from "@react-pdf/renderer";
@@ -12,7 +11,6 @@ import { ResumeProps } from "../resumes/ResumeUtils";
 import EntryType from "../../data/enums/EntryType";
 import {
   getIcon,
-  flatStyles,
   mb,
   ml,
   mt,
@@ -37,13 +35,15 @@ import {
   color,
   left,
   top,
+  flexRow,
+  flexGrow,
   bt,
+  flexWrap,
+  alignFlexStart,
+  justifySpaceBetween,
 } from "./PDFUtils";
 import { isSocialType } from "../../data/enums/SocialType";
 import ShowCaseType from "../../data/enums/ShowCaseType";
-
-// Create styles
-const styles = StyleSheet.create(flatStyles());
 
 const FlatResumePDF = ({ resume, relevance }: ResumeProps) => {
   const {
@@ -61,7 +61,7 @@ const FlatResumePDF = ({ resume, relevance }: ResumeProps) => {
     .join(", ");
 
   return (
-    <PDFViewer width="100%" height="1000" style={styles.pos}>
+    <PDFViewer width="100%" height="1000">
       <Document>
         <Page size="A4" style={join(p(15), pt(35), pb(35))}>
           <View style={fontSize(30)}>
@@ -72,8 +72,8 @@ const FlatResumePDF = ({ resume, relevance }: ResumeProps) => {
           <View style={mb(10)}>
             <Text>{summary.value}</Text>
           </View>
-          <View style={styles.flexRow}>
-            <View style={styles.flexGrow}>
+          <View style={flexRow()}>
+            <View style={flexGrow()}>
               {contacts.map((contact, index) => (
                 <View style={ml(24)}>
                   <View
@@ -109,7 +109,7 @@ const FlatResumePDF = ({ resume, relevance }: ResumeProps) => {
                 </View>
               ))}
             </View>
-            <View style={styles.flexGrow}>
+            <View style={flexGrow()}>
               {languages.map((language, index) => (
                 <Text style={join(mt(4), mb(4))} key={index}>
                   {language.code}&nbsp;
@@ -121,11 +121,10 @@ const FlatResumePDF = ({ resume, relevance }: ResumeProps) => {
           <View style={join(bb("lightgrey", 1), mt(4), mb(4))}></View>
           <View
             style={join(
-              styles.sectionSkillContainer,
-              styles.flexWrap,
-              styles.alignFlexStart,
-              styles.justifySpaceBetween,
-              styles.flexRow,
+              flexWrap(),
+              alignFlexStart(),
+              justifySpaceBetween(),
+              flexRow(),
               fontSize(18)
             )}
           >

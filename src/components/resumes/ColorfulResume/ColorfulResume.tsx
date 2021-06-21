@@ -1,9 +1,15 @@
 import React from "react";
 import "./ColorfulResume.css";
-import { Container, Row, Col, Card, ListGroup, Badge } from "react-bootstrap";
+import { Container, Row, Col, Card, Badge } from "react-bootstrap";
 import EntryType from "../../../data/enums/EntryType";
 import { ResumeProps, getIcon } from "../ResumeUtils";
 import IconColor from "../../../data/enums/IconColor";
+
+const LineSeparator = () => (
+  <Col xs={12}>
+    <hr />
+  </Col>
+);
 
 const ColorfulResume = ({ resume, relevance }: ResumeProps) => {
   const {
@@ -28,8 +34,8 @@ const ColorfulResume = ({ resume, relevance }: ResumeProps) => {
           <Card.Subtitle className="mb-2 text-muted">
             <i>{joinedPositions}</i>
           </Card.Subtitle>
-          <hr />
         </Col>
+        <LineSeparator />
       </Row>
       <Row className="pt-2">
         <Col className="pl-3 pr-1" xs={12} sm={12} md={12} xl={4}>
@@ -90,9 +96,7 @@ const ColorfulResume = ({ resume, relevance }: ResumeProps) => {
         </Col>
       </Row>
       <Row>
-        <Col xs={12}>
-          <hr />
-        </Col>
+        <LineSeparator />
         {skills.map((skill, index) => (
           <Col xs={6} sm={6} md={4} lg={3} xl={2} key={index}>
             <Badge pill className={"w-100 colorful-skill-" + skill.level}>
@@ -105,9 +109,7 @@ const ColorfulResume = ({ resume, relevance }: ResumeProps) => {
         ))}
       </Row>
       <Row className="pb-3">
-        <Col xs={12}>
-          <hr />
-        </Col>
+        <LineSeparator />
       </Row>
       {entries.map((entry, index) => {
         const refText =
@@ -183,9 +185,7 @@ const ColorfulResume = ({ resume, relevance }: ResumeProps) => {
         );
       })}
       <Row className="pl-3 pr-1 ">
-        <Col xs={12}>
-          <hr />
-        </Col>
+        <LineSeparator />
         <Col xs={12} className="p-1 d-flex border-0">
           <Row>
             {showcase.map((show, index) => (

@@ -4,7 +4,6 @@ import {
   Page,
   Text,
   View,
-  StyleSheet,
   Link,
   PDFViewer,
 } from "@react-pdf/renderer";
@@ -12,12 +11,12 @@ import { ResumeProps } from "../resumes/ResumeUtils";
 import EntryType from "../../data/enums/EntryType";
 import {
   getIcon,
-  flatStyles,
   mb,
   ml,
   mt,
   mr,
   fontSize,
+  flexGrow,
   join,
   pl,
   pr,
@@ -27,6 +26,7 @@ import {
   rRight,
   p,
   bgEnum,
+  flexRow,
   w,
   pos,
   h,
@@ -39,13 +39,13 @@ import {
   color,
   left,
   top,
+  flexWrap,
+  alignFlexStart,
+  justifySpaceBetween,
 } from "./PDFUtils";
 import { isSocialType } from "../../data/enums/SocialType";
 import ShowCaseType from "../../data/enums/ShowCaseType";
 import IconColor from "../../data/enums/IconColor";
-
-// Create styles
-const styles = StyleSheet.create(flatStyles());
 
 const ColorfulResumePDF = ({ resume, relevance }: ResumeProps) => {
   const {
@@ -63,7 +63,7 @@ const ColorfulResumePDF = ({ resume, relevance }: ResumeProps) => {
     .join(", ");
 
   return (
-    <PDFViewer width="100%" height="1000" style={styles.pos}>
+    <PDFViewer width="100%" height="1000">
       <Document>
         <Page size="A4">
           <View
@@ -89,8 +89,8 @@ const ColorfulResumePDF = ({ resume, relevance }: ResumeProps) => {
           <View style={join(pl(15), pr(15), mb(10))}>
             <Text>{summary.value}</Text>
           </View>
-          <View style={join(pl(15), pr(15), styles.flexRow)}>
-            <View style={styles.flexGrow}>
+          <View style={join(pl(15), pr(15), flexRow())}>
+            <View style={flexGrow()}>
               {contacts.map((contact, index) => (
                 <View style={ml(24)}>
                   <View
@@ -126,7 +126,7 @@ const ColorfulResumePDF = ({ resume, relevance }: ResumeProps) => {
                 </View>
               ))}
             </View>
-            <View style={styles.flexGrow}>
+            <View style={flexGrow()}>
               {languages.map((language, index) => (
                 <View
                   style={join(
@@ -154,11 +154,10 @@ const ColorfulResumePDF = ({ resume, relevance }: ResumeProps) => {
             style={join(
               pl(15),
               pr(15),
-              styles.sectionSkillContainer,
-              styles.flexWrap,
-              styles.alignFlexStart,
-              styles.justifySpaceBetween,
-              styles.flexRow,
+              flexWrap(),
+              alignFlexStart(),
+              justifySpaceBetween(),
+              flexRow(),
               fontSize(18)
             )}
           >

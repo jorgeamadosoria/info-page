@@ -136,25 +136,32 @@ export const getIcon = (name: String, color: IconColor = IconColor.BLACK) => {
   );
 };
 
-export const flatStyles = (): any => {
-  return {
-    flexRow: {
-      flexDirection: "row",
-    },
+export const flexGrow = () => {
+  return join({
+    flexGrow: 1,
+  });
+};
 
-    flexGrow: {
-      flexGrow: 1,
-    },
-    flexWrap: {
-      flexWrap: "wrap",
-    },
+export const flexWrap = () => {
+  return join({
+    flexWrap: "wrap",
+  });
+};
 
-    alignFlexStart: {
-      alignContent: "flex-start",
-    },
+export const alignFlexStart = () => {
+  return join({
+    alignContent: "flex-start",
+  });
+};
 
-    justifySpaceBetween: { justifyContent: "space-between" },
-  };
+export const justifySpaceBetween = () => {
+  return join({ justifyContent: "space-between" });
+};
+
+export const flexRow = () => {
+  return join({
+    flexDirection: "row",
+  });
 };
 
 export const top = (value: number) => {
