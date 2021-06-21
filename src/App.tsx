@@ -7,7 +7,7 @@ import CompactResume from "./components/resumes/CompactResume/CompactResume";
 import LeftRailResume from "./components/resumes/LeftRailResume/LeftRailResume";
 //import Header from "./components/Header/Header";
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Switch,
   Route,
   Redirect,
