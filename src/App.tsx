@@ -46,7 +46,7 @@ function App(props: any) {
 
   return (
     <Container fluid>
-      <Router basename={process.env.PUBLIC_URL}>
+      <Router>
         <Switch>
           <Route exact path="/">
             <Redirect to="/flat" />
