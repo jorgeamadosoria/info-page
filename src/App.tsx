@@ -48,10 +48,10 @@ function App(props: any) {
     <Container fluid>
       <Router basename={process.env.PUBLIC_URL}>
         <Switch>
-          <Route exact path="/">
+          <Route path="/">
             <Redirect to="/flat" />
           </Route>
-          <Route exact path="/flat">
+          <Route path="/flat">
             <Header format="/flat-pdf"></Header>
             {process.env.PUBLIC_URL}
             <div className="content">
@@ -61,7 +61,7 @@ function App(props: any) {
               />
             </div>
           </Route>
-          <Route exact path="/colorful">
+          <Route path="/colorful">
             <Header format="/colorful-pdf"></Header>
             <div className="content">
               <ColorfulResume
@@ -70,7 +70,7 @@ function App(props: any) {
               />
             </div>
           </Route>
-          <Route exact path="/leftrail">
+          <Route path="/leftrail">
             <Header format="/leftrail-pdf"></Header>
             <div className="content">
               <LeftRailResume
