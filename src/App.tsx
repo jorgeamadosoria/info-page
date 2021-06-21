@@ -48,11 +48,11 @@ function App(props: any) {
     <Container fluid>
       <Router basename={process.env.PUBLIC_URL}>
         <Switch>
-          <Route path="/">
+          <Route path="">
             <Redirect to="/flat" />
           </Route>
-          <Route path="/flat">
-            <Header format="/flat-pdf"></Header>
+          <Route path="flat">
+            <Header format="flat-pdf"></Header>
             {process.env.PUBLIC_URL}
             <div className="content">
               <FlatResume
@@ -61,8 +61,8 @@ function App(props: any) {
               />
             </div>
           </Route>
-          <Route path="/colorful">
-            <Header format="/colorful-pdf"></Header>
+          <Route path="colorful">
+            <Header format="colorful-pdf"></Header>
             <div className="content">
               <ColorfulResume
                 resume={resumeState.resume}
@@ -70,8 +70,8 @@ function App(props: any) {
               />
             </div>
           </Route>
-          <Route path="/leftrail">
-            <Header format="/leftrail-pdf"></Header>
+          <Route path="leftrail">
+            <Header format="leftrail-pdf"></Header>
             <div className="content">
               <LeftRailResume
                 resume={resumeState.resume}
@@ -79,8 +79,8 @@ function App(props: any) {
               />
             </div>
           </Route>
-          <Route exact path="/compact">
-            <Header format="/compact-pdf"></Header>
+          <Route exact path="compact">
+            <Header format="compact-pdf"></Header>
             <div className="content">
               <CompactResume
                 resume={resumeState.resume}
@@ -88,31 +88,31 @@ function App(props: any) {
               />
             </div>
           </Route>
-          <Route exact path="/compact-pdf">
+          <Route exact path="compact-pdf">
             <CompactResumePDF
               resume={resumeState.resume}
               relevance={Relevance.ESSENTIAL}
             />
           </Route>
-          <Route exact path="/colorful-pdf">
+          <Route exact path="colorful-pdf">
             <ColorfulResumePDF
               resume={resumeState.resume}
               relevance={Relevance.TRIVIAL}
             />
           </Route>
-          <Route exact path="/leftrail-pdf">
+          <Route exact path="leftrail-pdf">
             <LeftRailResumePDF
               resume={resumeState.resume}
               relevance={Relevance.STANDARD}
             />
           </Route>
-          <Route exact path="/flat-pdf">
+          <Route exact path="flat-pdf">
             <FlatResumePDF
               resume={resumeState.resume}
               relevance={Relevance.TRIVIAL}
             />
           </Route>
-          <Route exact path="/about">
+          <Route exact path="about">
             <Header format=""></Header>
             <About resume={resumeState.resume} />
           </Route>
