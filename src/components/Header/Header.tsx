@@ -17,7 +17,7 @@ export type HeaderProps = {
 const Header = ({ format }: HeaderProps) => {
   return (
     <Navbar fixed="top" bg="light" expand="lg">
-      <Navbar.Brand href="#home">Résumé{process.env.PUBLIC_URL}</Navbar.Brand>
+      <Navbar.Brand href="#home">Résumé</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse className="justify-content-end">
         <Nav className="me-auto">
