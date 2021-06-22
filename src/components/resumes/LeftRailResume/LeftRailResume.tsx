@@ -33,7 +33,7 @@ const LeftRailResume = ({ resume, relevance }: ResumeProps) => {
       className="mt-4 leftrail-rounded bg-secondary border border-secondary"
     >
       <Row>
-        <Col xs={4} className="p-0 text-light">
+        <Col xs={12} sm={4} className="p-0 text-light">
           <h2 className="ml-4 mt-2">{name.value}</h2>
           <Card.Subtitle className="ml-4 mb-2">
             <i>{joinedPositions}</i>
@@ -103,7 +103,7 @@ const LeftRailResume = ({ resume, relevance }: ResumeProps) => {
             ))}
           </ListGroup>
         </Col>
-        <Col xs={8} className="pt-2 leftrail-rounded-right bg-light">
+        <Col xs={12} sm={8} className="pt-2 leftrail-rounded-right bg-light">
           {summary.value}
           <hr />
           <div className="h3 text-truncate ">Professional Timeline</div>
@@ -118,20 +118,20 @@ const LeftRailResume = ({ resume, relevance }: ResumeProps) => {
               <Row key={index} className="ml-3">
                 <Col
                   xs={12}
-                  className="pb-0 border border-dark border-bottom-0 border-top-0 border-right-0"
+                  className="text-wrap pb-0 border border-dark border-bottom-0 border-top-0 border-right-0"
                 >
                   <div className="leftrail-timeline-icon border p-2 border-dark">
                     {getIcon(entry.type)}
                   </div>
 
-                  <p className="mt-2">
+                  <p className="mt-2 text-break">
                     {new Date(entry.fromDate).toLocaleDateString()}
                     {entry.toDate &&
                       " -> ".concat(
                         new Date(entry.toDate).toLocaleDateString()
                       )}
                   </p>
-                  <p className="pl-5">
+                  <p className="pl-5 text-break">
                     {entry.name}&nbsp;@&nbsp;
                     {refText && (
                       <a
@@ -156,7 +156,7 @@ const LeftRailResume = ({ resume, relevance }: ResumeProps) => {
                       </>
                     )}
                   </p>
-                  <p className="pl-4">{entry.description.value}</p>
+                  <p className="pl-4 text-break">{entry.description.value}</p>
                 </Col>
                 <Col
                   className="pb-0 border border-dark border-bottom-0 border-top-0 border-right-0"

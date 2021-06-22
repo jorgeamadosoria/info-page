@@ -32,7 +32,7 @@ const CompactResume = ({ resume, relevance }: ResumeProps) => {
         </Col>
       </Row>
       <Row className="pt-2">
-        <Col xs={6}>
+        <Col xs={12} sm={6}>
           <Col className="ml-1 pl-3 pr-1" xs={12}>
             <Card.Subtitle className="mb-2 text-muted">Summary</Card.Subtitle>
           </Col>
@@ -102,10 +102,12 @@ const CompactResume = ({ resume, relevance }: ResumeProps) => {
             ))}
           </Col>
         </Col>
-        <Col xs={6}>
+        <Col xs={12} sm={6}>
           <Col className="ml-1 pl-3 pr-1" xs={12}>
+          <hr className="d-sm-none d-xs-block" />  
             <Card.Subtitle className="mb-2 text-muted">Timeline</Card.Subtitle>
           </Col>
+          <Col className="ml-1 pl-3 pr-1" xs={12}>
           {entries.map((entry, index) => {
             return (
               <Row key={index} className="ml-3">
@@ -145,6 +147,7 @@ const CompactResume = ({ resume, relevance }: ResumeProps) => {
               </Row>
             );
           })}
+          </Col>
         </Col>
       </Row>
     </Container>

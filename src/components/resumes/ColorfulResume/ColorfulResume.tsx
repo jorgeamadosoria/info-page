@@ -38,20 +38,20 @@ const ColorfulResume = ({ resume, relevance }: ResumeProps) => {
         <LineSeparator />
       </Row>
       <Row className="pt-2">
-        <Col className="pl-3 pr-1" xs={12} sm={12} md={12} xl={4}>
+        <Col className="pl-3 pr-1" xs={12} xl={4}>
           <p>{summary.value}</p>
         </Col>
-        <Col className="pl-xl-3 pr-xl-0" xs={12} lg={8} xl={5}>
+        <Col xs={12} className="d-xl-none">
+          <hr />
+        </Col>
+        <Col className="flat-left-border mt-1 mb-1"
+          xs={12}
+          sm={12}
+          md={8}
+          xl={5}>
           <Row className="pl-2 pl-xl-0">
             {contacts.map((contact, index) => (
-              <Col
-                xs={6}
-                md={4}
-                lg={6}
-                className="p-1 p-xl-0 pt-xl-1 pb-xl-1 border-0"
-                key={index}
-              >
-                <p className="text-break">
+              <Col xs={12} sm={6} className="p-1 text-truncate " key={index}>
                   {contact.url && (
                     <a className="text-dark" target="blank" href={contact.url}>
                       {getIcon(contact.type, IconColor.COLOR)} &nbsp;
@@ -64,7 +64,6 @@ const ColorfulResume = ({ resume, relevance }: ResumeProps) => {
                       <span className="text-break">{contact.name}</span>
                     </>
                   )}
-                </p>
               </Col>
             ))}
           </Row>
@@ -73,7 +72,7 @@ const ColorfulResume = ({ resume, relevance }: ResumeProps) => {
           <Row>
             {languages.map((language, index) => (
               <Col
-                xs={6}
+                xs={12}
                 sm={6}
                 md={4}
                 lg={12}
@@ -98,7 +97,7 @@ const ColorfulResume = ({ resume, relevance }: ResumeProps) => {
       <Row>
         <LineSeparator />
         {skills.map((skill, index) => (
-          <Col xs={6} sm={6} md={4} lg={3} xl={2} key={index}>
+          <Col xs={12} sm={6} md={4} lg={3} xl={2} key={index}>
             <Badge pill className={"w-100 colorful-skill-" + skill.level}>
               <b>
                 {skill.name}
