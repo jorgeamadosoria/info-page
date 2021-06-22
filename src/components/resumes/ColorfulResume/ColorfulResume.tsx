@@ -133,17 +133,31 @@ const ColorfulResume = ({ resume, relevance }: ResumeProps) => {
               >
                 {getIcon(entry.type, IconColor.COLOR)}
               </div>
+              
               <p
                 className={
                   "colorful-" +
                   entry.type +
-                  " h5 colorful-entry-header border border-left-0 border-dark pl-3 d-inline-flex"
+                  " d-none d-sm-inline h5 colorful-entry-header border border-left-0 border-dark pl-3"
                 }
               >
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 {entry.fromDate.toLocaleDateString()}
                 {entry.toDate &&
-                  " to ".concat(entry.toDate.toLocaleDateString())}
+                  " -> ".concat(entry.toDate.toLocaleDateString())}
+                &nbsp;&nbsp;
+              </p>
+              <p
+                className={
+                  "colorful-" +
+                  entry.type +
+                  " d-xs-inline d-sm-none colorful-entry-header border border-left-0  border-dark pl-3 ml-0 d-inline-flex"
+                }
+              >
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                {entry.fromDate.toLocaleDateString()}
+                {entry.toDate &&
+                  " -> ".concat(entry.toDate.toLocaleDateString())}
                 &nbsp;&nbsp;
               </p>
               <p className="h6 pl-4 ml-3">

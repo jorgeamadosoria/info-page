@@ -1,99 +1,101 @@
 .colorful-timeline-icon {
-    border-radius:50%;
-    position: relative;
-    float:left;
-    left: -36px;
-    top: -20px;
-    width: 40px;
-    text-align: center;
-    z-index:200;
+  border-radius: 50%;
+  position: relative;
+  float: left;
+  left: -36px;
+  top: -20px;
+  width: 40px;
+  text-align: center;
+  z-index: 200;
 }
 
 .contact-image {
-    max-width:25px;
+  max-width: 25px;
 }
 
 .colorful-entry {
-    border-radius: 0 25px 25px 0;
+  border-radius: 0 25px 25px 0;
 }
 
 .colorful-work {
-    background-color:#DFE7FD;
+  background-color: #dfe7fd;
 }
 
 .colorful-education {
-    background-color: #E2ECE9;
+  background-color: #e2ece9;
 }
 
 .colorful-volunteering {
-    background-color: #FDE2E4;
+  background-color: #fde2e4;
 }
 
 .colorful-certification {
-   background-color: #FFF1E6; 
+  background-color: #fff1e6;
 }
 
 .colorful-skill-senior {
-    background-color: #6cb8c6;
-    width: 100%;
+  background-color: #6cb8c6;
+  width: 100%;
 }
 
 .colorful-skill-intermediate {
-    background-color: #a7d5dd;
-    width: 100%;
+  background-color: #a7d5dd;
+  width: 100%;
 }
 
 .colorful-skill-junior {
-    background-color: #e2f1f4;
-    width: 100%;
+  background-color: #e2f1f4;
+  width: 100%;
 }
 
 .colorful-entry-header {
-    top: -12px;
-    left:-41px;
-    position:relative;
-    border-radius: 0 25px 25px 0;
-    z-index:100;
-    line-height: 1.5;
-    min-width:80%;
-    max-width:80%;
+  top: -12px;
+  left: -41px;
+  position: relative;
+  border-radius: 0 25px 25px 0;
+  z-index: 100;
+  line-height: 1.5;
+  font-size: 4.1vw;
 }
 
 @media (min-width: 576px) {
-    .colorful-entry-header {
-        min-width:60%;
-        max-width:60%;
-    }
+  .colorful-entry-header {
+    top: -12px;
+    left: -41px;
+    position: relative;
+    min-width: 60%;
+    max-width: 60%;
+  }
 }
 
 .colorfulreference {
-  color: #292b2c !important; 
+  color: #292b2c !important;
   text-decoration: underline;
 }
 
 .colorful-native {
-    background-color:#225158 !important;
+  background-color: #225158 !important;
 }
 
 .colorful-portfolio-bg {
-    background-color: #ffd1c2 !important;
+  background-color: #ffd1c2 !important;
 }
 
 .colorful-portfolio-border {
-    border-color: #ffd1c2 !important;
+  border-color: #ffd1c2 !important;
 }
 
 .colorful-proficient {
-    background-color:#2e6c76 !important;
+  background-color: #2e6c76 !important;
 }
 
 .colorful-intermediate {
-    background-color:#398793 !important;
+  background-color: #398793 !important;
 }
 
 .colorful-beginner {
-    background-color:#45A2B0 !important;
+  background-color: #45a2b0 !important;
 }
 .colorful-basic {
-    background-color:#5DB3C0 !important;
+  background-color: #5db3c0 !important;
 }
