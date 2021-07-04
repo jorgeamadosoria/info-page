@@ -11,6 +11,13 @@
   },
   "showcase": [
     {
+      "url": "https://jorgeamadosoria.info/Chemical/index.html",
+      "name": "Chemical Words",
+      "description": "Web page to represent words with chemical elements as shown in the periodic table.",
+      "language": "EN",
+      "type": "web",
+      "relevance": "standard"
+    },{
       "url": "https://facundia-demo.herokuapp.com/",
       "name": "Facundia Demo",
       "description": "Web demo for Facundia, a Java library built to conjugate verbs following Spanish language grammar rules.",
