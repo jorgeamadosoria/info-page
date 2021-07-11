@@ -25,7 +25,9 @@ import { About } from "./components/About/About";
 function App(props: any) {
   const [resumeState, setResumeState] = useState({ resume: new Resume() });
   useEffect(() => {
-    fetch(process.env.PUBLIC_URL + "/data.json")
+    fetch(
+      "https://jorgeamadosoria.info/data-store/jorgeamadosoria.github.io/data.json"
+    )
       .then(function (response) {
         if (!response.ok) {
           throw Error(response.statusText);
