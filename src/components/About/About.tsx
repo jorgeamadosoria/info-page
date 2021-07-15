@@ -87,7 +87,7 @@ export const About = ({ resume }: AboutProps) => {
                 particularly challenging or special about the technology used,
                 it's just an useful website to have as a professional online
                 identity. A link to my{" "}
-                <a href="https://portfolio-jasr.herokuapp.com/">
+                <a href="https://jorgeamadosoria.info/portfolio/">
                   portfolio website
                 </a>
                 &nbsp; is also included.

@@ -64,7 +64,7 @@ const Header = ({ format }: HeaderProps) => {
           </Nav.Link>
           <Nav.Link
             target="_blank"
-            href="https://portfolio-jasr.herokuapp.com/"
+            href="https://jorgeamadosoria.info/portfolio/"
           >
             <FontAwesomeIcon icon={faBriefcase} />
             &nbsp;&nbsp;Portfolio
